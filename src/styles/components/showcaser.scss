@@ -1,0 +1,20 @@
+.showcaser {
+  margin-top: calc((100vh - #{$showcaserHeight}) / 2);
+
+  &__slider {
+    height: $showcaserHeight;
+    max-width: $maxMainWidth;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      display: block;
+      font-family: "MonumentExtended";
+      font-size: 110px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+}

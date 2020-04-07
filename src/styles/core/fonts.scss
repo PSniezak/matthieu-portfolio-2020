@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Apercu';
+  src: local('Apercu'), url(../../fonts/Apercu.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Apercu';
+  src: local('Apercu'), url(../../fonts/Apercu-bold.otf) format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Authenia';
+  src: local('Authenia'), url(../../fonts/Authenia.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'MonumentExtended';
+    src: local('MonumentExtended'), url(../../fonts/MonumentExtended-regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'MonumentExtended';
+    font-weight: 900;
+    src: local('MonumentExtended'), url(../../fonts/MonumentExtended-ultrabold.otf) format('opentype');
+}

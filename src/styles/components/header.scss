@@ -1,0 +1,74 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: calc((100vh - #{$showcaserHeight}) / 2);
+  max-width: $mainWidth;
+  display: block;
+  z-index: 10;
+
+  .is-mobile & {
+    position: fixed;
+  }
+
+  @include customMediaQuery($mainWidth) {
+    max-width: 85%;
+    height: 85px;
+  }
+
+  &__logo {
+    img {
+      width: 33px;
+      height: 26px;
+    }
+  }
+  
+  &__wrap {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__links {
+    a {
+      display: inline-block;
+      position: relative;
+      margin-left: 60px;
+      z-index: 12;
+      font-size: 16px;
+      font-family: "Apercu";
+      font-weight: bold;
+      text-decoration: none;
+
+      &.active {
+        svg path {
+          transition: stroke-dashoffset 1s;
+          stroke-dashoffset: 0px;
+
+        }
+      }
+
+      svg {
+        display: block;
+        position: absolute;
+        top: -28px;
+        right: -28px;
+
+        height: 60px;
+        width: 102px;
+
+        pointer-events: none;
+
+        path {
+          stroke-dashoffset: 670.73px;
+          stroke-dasharray: 670.73px;
+          transition: stroke-dashoffset 1s;
+        }
+      }
+    }
+  }
+}

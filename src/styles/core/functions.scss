@@ -1,0 +1,10 @@
+@mixin customMediaQuery($size) {
+  @media screen and (max-width: #{$size}) {
+    @content
+  }
+}
+@mixin customHeightMediaQuery($size) {
+  @media screen and (max-height: #{$size}) {
+    @content
+  }
+}

@@ -1,0 +1,41 @@
+.about {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; right: 0; left: 0; bottom: 0;
+
+  &__bg {
+    top: 0; right: 0; left: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: $c-red;
+    z-index: -1;
+    pointer-events: none;
+    backface-visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+
+    .is-mobile & {
+      transform: translate3d(0, 0, 0);
+    }
+  } 
+
+  &__overlay {
+    top: 0; right: 0; left: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: $c-black;
+    z-index: 2;
+    pointer-events: none;
+    backface-visibility: hidden;
+
+    transform: translate3d(0, -100%, 0);
+  }
+
+  &__content {
+      min-height: 100vh;
+      overflow: hidden;
+  }
+}
