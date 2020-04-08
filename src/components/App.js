@@ -7,7 +7,7 @@ import { AppContext } from "context/app-context";
 import TransitionRouter from "components/TransitionRouter";
 import Header from "components/Header";
 import Home from "components/Home";
-import Case from "components/Case";
+import Case from "components/Pages/Case";
 import Works from "components/Works";
 import About from "components/About";
 
@@ -27,9 +27,9 @@ export default class App extends React.Component {
         location: {
           current: "",
           previous: "",
-          slug: null
-        }
-      }
+          slug: null,
+        },
+      },
     };
   }
 
@@ -49,7 +49,7 @@ export default class App extends React.Component {
     }
   }
 
-  wheel = e => {
+  wheel = (e) => {
     e.stopPropagation();
     this.speed = -e.deltaY * 0.5;
 
@@ -139,7 +139,7 @@ export default class App extends React.Component {
                 onExit={this.handleExit}
                 className={`transition`}
               >
-                {state => (
+                {(state) => (
                   <Router location={location} primary={false}>
                     <Home
                       path="/"

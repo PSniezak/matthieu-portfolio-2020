@@ -31,7 +31,7 @@
         display: block;
         margin: 0 100px;
         opacity: 0;
-        cursor: url('../../images/cursor_project.png') 64 64, pointer;
+        cursor: url("../../images/cursor_project.png") 64 64, pointer;
 
         > * {
           display: inline-block;
@@ -40,7 +40,7 @@
           vertical-align: top;
           font-family: "Authenia";
           font-size: 20px;
-          color: #FFFFFF;
+          color: #ffffff;
           padding-top: 6px;
           margin-right: 6px;
         }
@@ -50,7 +50,7 @@
           font-size: 110px;
           text-transform: uppercase;
           text-decoration: none;
-  
+
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
           -webkit-text-stroke: 1px $c-white;
@@ -58,7 +58,7 @@
           color: transparent;
           white-space: nowrap;
           position: relative;
-  
+
           &:after {
             content: attr(data-title);
             display: block;
@@ -78,7 +78,8 @@
 
     &__background {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       height: 100%;
       width: 100%;
       z-index: 1;
@@ -105,7 +106,7 @@
           &:nth-child(1n) {
             margin-left: -175px;
           }
-          
+
           &:nth-child(2n) {
             margin-left: -701px;
           }
@@ -119,7 +120,8 @@
 
             img {
               position: absolute;
-              top: 0; left: 0;
+              top: 0;
+              left: 0;
               opacity: 0;
 
               &:first-child {

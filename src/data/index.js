@@ -43,7 +43,14 @@ export const data = {
         title: "FINAL FRAMES",
         content:
           "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film.",
-        images: ["", ""]
+        images: [
+          require("images/eclipse_main.jpg"),
+          require("images/eclipse_main.jpg"),
+          require("images/eclipse_main.jpg"),
+          require("images/eclipse_main.jpg"),
+          require("images/eclipse_main.jpg"),
+          require("images/eclipse_main.jpg")
+        ]
       },
       section_images: {
         title: "WHERE HUMANS NEED TO RECOVER",
@@ -193,7 +200,13 @@ export const data = {
         title: "FINAL FRAMES",
         content:
           "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film.",
-        images: ["", ""]
+        images: [
+          require("images/syfy_main.jpg"),
+          require("images/syfy_main.jpg"),
+          require("images/syfy_main.jpg"),
+          require("images/syfy_main.jpg"),
+          require("images/syfy_main.jpg")
+        ]
       },
       section_images: {
         title: "WHERE HUMANS NEED TO RECOVER",

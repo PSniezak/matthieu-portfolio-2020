@@ -1,0 +1,26 @@
+.videoSection__imageWrapper {
+  position: relative;
+  cursor: pointer;
+
+  &.not-playing {
+    .videoSection__video {
+      iframe {
+        pointer-events: none;
+      }
+    }
+  }
+
+  .videoSection__image {
+    opacity: 0;
+    width: 100%;
+  }
+
+  .videoSection__video {
+    opacity: 1;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+  }
+}
