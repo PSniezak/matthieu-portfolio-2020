@@ -83,7 +83,8 @@ export default class Loader extends React.Component {
     anime({
       targets: this.ref.current,
       opacity: [1, 0],
-      duration: 1000,
+      scale: [1, 1.1],
+      duration: 800,
       easing: "easeOutQuart",
       delay: 3000,
       complete: function(anim) {
