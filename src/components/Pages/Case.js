@@ -6,6 +6,9 @@ import { timeline } from "utils/timeline";
 import { data } from "data";
 import VideoSection from "../VideoSection";
 import ImagesSlider from "../ImageSlider";
+import ContentSection from "../ContentBlock";
+import ContentTitleSection from "../ContentTitleSection";
+import ImageSection from "../ImageSection";
 
 export default class Case extends React.Component {
   static contextType = AppContext;
@@ -16,7 +19,7 @@ export default class Case extends React.Component {
     super(props);
 
     this.ref = React.createRef();
-    this.project = data.projects.find((x) => x.slug === this.props.slug);
+    this.project = data.projects.find(x => x.slug === this.props.slug);
 
     this.state = {};
   }
@@ -56,7 +59,7 @@ export default class Case extends React.Component {
       translateZ: 0,
       easing: "easeOutQuart",
       duration: 1000,
-      delay,
+      delay
     });
   }
 
@@ -74,7 +77,7 @@ export default class Case extends React.Component {
             <div className="case__header flex flex--center-middle wrapper">
               <h2 className="mainTitle">{get(project, "name")} </h2>
               <div className="case__headerTags">
-                {get(project, "tags", []).map((tag) => {
+                {get(project, "tags", []).map(tag => {
                   return (
                     <span key={tag} className="tag colored--grey uppercase">
                       {tag}
@@ -84,34 +87,35 @@ export default class Case extends React.Component {
               </div>
             </div>
 
-            {/* content */}
-            <div className="case__description section wrapper wrapper--small ">
-              <p className="text text--large">{get(project, "description")}</p>
-            </div>
+            {get(project, "sections").map(section => {
+              switch (section.type) {
+                case "content":
+                  return <ContentSection content={get(section, "content")} />;
+                case "content-title":
+                  return (
+                    <ContentTitleSection
+                      title={get(section, "title")}
+                      content={get(section, "content")}
+                    />
+                  );
+                case "image":
+                  return <ImageSection image={get(section, "image")} />;
+                case "slider":
+                  return <ImagesSlider images={get(section, "images")} />;
+                case "paralax":
+                  return "paralax";
+                case "video":
+                  return (
+                    <VideoSection
+                      imgUrl={get(section, "image")}
+                      videoID={get(section, "video")}
+                    />
+                  );
 
-            {/* Image video section: TODO */}
-            <VideoSection
-              imgUrl={get(project, "section__video.image")}
-              videoID={get(project, "section__video.video")}
-            />
-
-            {/* Final Frame */}
-
-            <div className="case__finalFrames flex wrapper">
-              <div className="case__finalFramesTitle">
-                <h3 className="title title--small">
-                  {get(project, "section_finalFrames.title")}
-                </h3>
-              </div>
-              <div className="case__finalFramesContent">
-                <p className="text text--small">
-                  {get(project, "section_finalFrames.content")}
-                </p>
-              </div>
-            </div>
-
-            {/* Slider */}
-            <ImagesSlider images={get(project, "section_finalFrames.images")} />
+                default:
+                  break;
+              }
+            })}
           </div>
         </ScrollWrapper>
       </div>

@@ -13,13 +13,13 @@ const ImagesSlider = ({ images }) => {
     adaptiveHeight: true,
     slidesToScroll: 1,
     focusOnSelect: false,
-    arrows: false,
+    arrows: false
   };
 
   //   Todo: cropping ?
 
   return (
-    <div className="imagesSliderWrapper">
+    <div className="imagesSliderWrapper section">
       <div className="wrapper  ">
         <div className="imagesSlider">
           <Slider {...settings}>

@@ -84,8 +84,6 @@ export const data = {
       name: "Syfy",
       slug: "syfy",
       tags: ["short", "design", "CGI"],
-      description:
-        "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive.",
       mainVideo: require("images/eclipse_home.mp4"),
       mainImage: require("images/syfy_main.jpg"),
       slideshow: [

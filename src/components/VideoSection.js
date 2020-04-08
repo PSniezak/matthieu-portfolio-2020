@@ -30,17 +30,17 @@ const VideoSection = ({ imgUrl, videoID }) => {
     }
   }, [videoVisible]);
 
-  const animation = (reverse) => {
+  const animation = reverse => {
     anime({
       targets: ".videoSection__image",
       opacity: reverse ? 1 : 0,
-      easing: "easeInOutQuad",
+      easing: "easeInOutQuad"
     });
 
     anime({
       targets: ".videoSection__video",
       opacity: reverse ? 0 : 1,
-      easing: "easeInOutQuad",
+      easing: "easeInOutQuad"
       //   begin: function() {
       //     document.querySelector(
       //       ".videoSection__video #vimeo"
@@ -77,7 +77,7 @@ const VideoSection = ({ imgUrl, videoID }) => {
   }, [video, image.current]);
 
   return (
-    <div className="videoSection">
+    <div className="videoSection section">
       <div
         className={`videoSection__imageWrapper ${
           videoVisible ? "playing" : "not-playing"
