@@ -30,7 +30,7 @@
 }
 
 .case__finalFrames {
-  padding-top: 100px;
+  padding-top: 3 * $sectionPadding;
   padding-bottom: $sectionPadding;
 
   > div {
