@@ -31,37 +31,59 @@ export const data = {
         "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive.",
       mainVideo: require("images/eclipse_home.mp4"),
       mainImage: require("images/eclipse_main.jpg"),
-      slideshow: [
-        require("images/eclipse_slideshow1.png"),
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png"),
-        require("images/eclipse_slideshow1.png"),
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png")
+      sections: [
+        {
+          type: "content",
+          content:
+            "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive."
+        },
+
+        {
+          type: "video",
+          image: require("images/eclipse_main.jpg"),
+          video: "57399324"
+        },
+        {
+          type: "content-title",
+          title: "FINAL FRAMES",
+          content:
+            "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film."
+        },
+
+        {
+          type: "slider",
+          images: [
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg")
+          ]
+        },
+        {
+          type: "paralax",
+          title: "WHERE HUMANS NEED TO RECOVER",
+          images: [
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg"),
+            require("images/eclipse_main.jpg")
+          ]
+        },
+
+        {
+          type: "content",
+          content:
+            "The concept of the whole production of Eclipse has been challenging  as I was constantly progressing, analysing and evolving my skillsets while developping the imagery. The narrative started with a first vivid thought of a women asleep inside a tube. From there I imagined other key visuals to further shape and understand the world of Eclipse.",
+          image: ""
+        },
+        {
+          type: "image",
+          image: require("images/eclipse_main.jpg")
+        }
       ],
-      section_finalFrames: {
-        title: "FINAL FRAMES",
-        content:
-          "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film.",
-        images: [
-          require("images/eclipse_main.jpg"),
-          require("images/eclipse_main.jpg"),
-          require("images/eclipse_main.jpg"),
-          require("images/eclipse_main.jpg"),
-          require("images/eclipse_main.jpg"),
-          require("images/eclipse_main.jpg")
-        ]
-      },
-      section_images: {
-        title: "WHERE HUMANS NEED TO RECOVER",
-        images: ["", ""]
-      },
-      section_content: {
-        content:
-          "The concept of the whole production of Eclipse has been challenging  as I was constantly progressing, analysing and evolving my skillsets while developping the imagery. The narrative started with a first vivid thought of a women asleep inside a tube. From there I imagined other key visuals to further shape and understand the world of Eclipse.",
-        image: ""
-      },
-      additional_content: ["content", "content"],
+
       credit: [
         {
           field: "Film",
@@ -86,136 +108,55 @@ export const data = {
       tags: ["short", "design", "CGI"],
       mainVideo: require("images/eclipse_home.mp4"),
       mainImage: require("images/syfy_main.jpg"),
-      slideshow: [
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png"),
-        require("images/eclipse_slideshow1.png"),
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png"),
-        require("images/eclipse_slideshow1.png")
-      ],
-      section_finalFrames: {
-        title: "FINAL FRAMES",
-        content:
-          "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film.",
-        images: ["", ""]
-      },
-      section_images: {
-        title: "WHERE HUMANS NEED TO RECOVER",
-        images: ["", ""]
-      },
-      section_content: {
-        content:
-          "The concept of the whole production of Eclipse has been challenging  as I was constantly progressing, analysing and evolving my skillsets while developping the imagery. The narrative started with a first vivid thought of a women asleep inside a tube. From there I imagined other key visuals to further shape and understand the world of Eclipse.",
-        image: ""
-      },
-      additional_content: ["content", "content"],
-      credit: [
+      sections: [
         {
-          field: "Film",
-          value: "Matthieu Tourdes",
-          url: "http://google.fr"
+          type: "content",
+          content:
+            "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive."
         },
         {
-          field: "Score",
-          value: "Echoic audio",
-          url: "http://google.fr"
+          type: "content-title",
+          title: "FINAL FRAMES",
+          content:
+            "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film."
         },
         {
-          field: "Edit",
-          value: "Fredoch",
-          url: "http://google.fr"
+          type: "image",
+          images: require("images/syfy_main.jpg")
+        },
+        {
+          type: "slider",
+          images: [
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg")
+          ]
+        },
+        {
+          type: "paralax",
+          title: "WHERE HUMANS NEED TO RECOVER",
+          images: [
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg"),
+            require("images/syfy_main.jpg")
+          ]
+        },
+        {
+          type: "video",
+          image: require("images/syfy_main.jpg"),
+          video: "57399324"
+        },
+        {
+          type: "content",
+          content:
+            "The concept of the whole production of Eclipse has been challenging  as I was constantly progressing, analysing and evolving my skillsets while developping the imagery. The narrative started with a first vivid thought of a women asleep inside a tube. From there I imagined other key visuals to further shape and understand the world of Eclipse.",
+          image: ""
         }
-      ]
-    },
-    {
-      name: "Bulgari",
-      slug: "bulgari",
-      tags: ["short", "design", "CGI"],
-      description:
-        "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive.",
-      mainVideo: require("images/eclipse_home.mp4"),
-      mainImage: require("images/eclipse_main.jpg"),
-      slideshow: [
-        require("images/eclipse_slideshow1.png"),
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png"),
-        require("images/eclipse_slideshow1.png"),
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png")
       ],
-      section_finalFrames: {
-        title: "FINAL FRAMES",
-        content:
-          "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film.",
-        images: ["", ""]
-      },
-      section_images: {
-        title: "WHERE HUMANS NEED TO RECOVER",
-        images: ["", ""]
-      },
-      section_content: {
-        content:
-          "The concept of the whole production of Eclipse has been challenging  as I was constantly progressing, analysing and evolving my skillsets while developping the imagery. The narrative started with a first vivid thought of a women asleep inside a tube. From there I imagined other key visuals to further shape and understand the world of Eclipse.",
-        image: ""
-      },
-      additional_content: ["content", "content"],
-      credit: [
-        {
-          field: "Film",
-          value: "Matthieu Tourdes",
-          url: "http://google.fr"
-        },
-        {
-          field: "Score",
-          value: "Echoic audio",
-          url: "http://google.fr"
-        },
-        {
-          field: "Edit",
-          value: "Fredoch",
-          url: "http://google.fr"
-        }
-      ]
-    },
-    {
-      name: "Expe",
-      slug: "expe",
-      tags: ["short", "design", "CGI"],
-      description:
-        "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive.",
-      mainVideo: require("images/eclipse_home.mp4"),
-      mainImage: require("images/eclipse_main.jpg"),
-      slideshow: [
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png"),
-        require("images/eclipse_slideshow1.png"),
-        require("images/eclipse_slideshow2.png"),
-        require("images/eclipse_slideshow3.png"),
-        require("images/eclipse_slideshow1.png")
-      ],
-      section_finalFrames: {
-        title: "FINAL FRAMES",
-        content:
-          "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film.",
-        images: [
-          require("images/syfy_main.jpg"),
-          require("images/syfy_main.jpg"),
-          require("images/syfy_main.jpg"),
-          require("images/syfy_main.jpg"),
-          require("images/syfy_main.jpg")
-        ]
-      },
-      section_images: {
-        title: "WHERE HUMANS NEED TO RECOVER",
-        images: ["", ""]
-      },
-      section_content: {
-        content:
-          "The concept of the whole production of Eclipse has been challenging  as I was constantly progressing, analysing and evolving my skillsets while developping the imagery. The narrative started with a first vivid thought of a women asleep inside a tube. From there I imagined other key visuals to further shape and understand the world of Eclipse.",
-        image: ""
-      },
-      additional_content: ["content", "content"],
       credit: [
         {
           field: "Film",

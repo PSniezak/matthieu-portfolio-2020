@@ -23,6 +23,7 @@ const VideoSection = ({ imgUrl, videoID }) => {
   };
 
   useEffect(() => {
+    setVideoSize();
     if (videoVisible) {
       animation(false);
     } else {

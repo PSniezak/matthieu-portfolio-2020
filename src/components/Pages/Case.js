@@ -9,10 +9,11 @@ import ImagesSlider from "../ImageSlider";
 import ContentSection from "../ContentBlock";
 import ContentTitleSection from "../ContentTitleSection";
 import ImageSection from "../ImageSection";
+import ImagesParallax from "../ImagesParallax";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 export default class Case extends React.Component {
   static contextType = AppContext;
-
   status = null;
 
   constructor(props) {
@@ -103,7 +104,12 @@ export default class Case extends React.Component {
                 case "slider":
                   return <ImagesSlider images={get(section, "images")} />;
                 case "paralax":
-                  return "paralax";
+                  return (
+                    <ImagesParallax
+                      title={get(section, "title")}
+                      images={get(section, "images")}
+                    />
+                  );
                 case "video":
                   return (
                     <VideoSection
