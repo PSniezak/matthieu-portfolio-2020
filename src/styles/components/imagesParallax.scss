@@ -4,30 +4,31 @@ $imageHeight: 350px;
 
 .imagesParallaxWrapper {
   .wrapper {
-    position: relative;
+    // position: relative;
   }
 
   .imagesParallaxWrapper__title {
     z-index: 10;
-    position: absolute;
+    // position: absolute;
     width: 100%;
+    margin-top: 120px;
   }
 }
 
 .imagesParallax {
   .imagesParallax__image {
     position: relative;
-    height: $imageHeight;
-    padding-bottom: 200px;
+    // height: $imageHeight;
+    // padding-bottom: -200px;
 
     span {
-      position: absolute;
+      // position: absolute;
       z-index: 12;
     }
     img {
       height: $imageHeight;
       width: auto;
-      position: absolute;
+      // position: absolute;
     }
 
     &:nth-child(6n + 1) {
@@ -35,16 +36,17 @@ $imageHeight: 350px;
 
       img {
         top: 0;
-        left: $space-1;
+        margin-left: $space-1;
         z-index: 0;
       }
     }
 
     &:nth-child(6n + 2) {
       //   margin-bottom: -($imageHeight / 2);
+      text-align: right;
       img {
         top: 0;
-        right: $space-1;
+        margin-right: $space-1;
         z-index: 2;
       }
     }
@@ -52,15 +54,16 @@ $imageHeight: 350px;
     &:nth-child(6n + 3) {
       //   margin-bottom: -($imageHeight / 1.5);
       img {
-        left: 0;
+        margin-left: 0;
         z-index: 1;
       }
     }
 
     &:nth-child(6n + 4) {
       //   margin-bottom: -50px;
+      text-align: right;
       img {
-        right: 0;
+        margin-right: 0;
         z-index: 0;
       }
     }
@@ -68,7 +71,7 @@ $imageHeight: 350px;
     &:nth-child(6n + 5) {
       //   margin-bottom: -($imageHeight / 1.5);
       img {
-        left: 0;
+        margin-left: 0;
         z-index: 2;
       }
     }
@@ -76,7 +79,7 @@ $imageHeight: 350px;
     &:nth-child(6n + 6) {
       //   margin-bottom: -100px;
       img {
-        right: 0;
+        margin-right: 0;
         z-index: 1;
       }
     }

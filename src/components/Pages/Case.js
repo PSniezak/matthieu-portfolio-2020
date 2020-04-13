@@ -10,7 +10,7 @@ import ContentSection from "../ContentBlock";
 import ContentTitleSection from "../ContentTitleSection";
 import ImageSection from "../ImageSection";
 import ImagesParallax from "../ImagesParallax";
-import { ParallaxProvider } from "react-scroll-parallax";
+import locomotiveScroll from "locomotive-scroll";
 
 export default class Case extends React.Component {
   static contextType = AppContext;
@@ -20,6 +20,7 @@ export default class Case extends React.Component {
     super(props);
 
     this.ref = React.createRef();
+    this.scroll = React.createRef();
     this.project = data.projects.find(x => x.slug === this.props.slug);
 
     this.state = {};
@@ -27,6 +28,12 @@ export default class Case extends React.Component {
 
   componentDidMount() {
     console.log(this.project);
+    setTimeout(() => {
+      const scroll = new locomotiveScroll({
+        el: this.scroll.current,
+        smooth: true
+      });
+    }, 1000);
   }
 
   componentDidUpdate(prevProps) {
@@ -71,8 +78,9 @@ export default class Case extends React.Component {
     const { project } = this;
 
     return (
-      <div className={`case`} ref={this.ref}>
-        <ScrollWrapper state={state}>
+      <div className={`case2`} ref={this.ref}>
+        <div ref={this.scroll}>
+          {/* <ScrollWrapper state={state}> */}
           <div className={`case__content`} ref={this.content}>
             {/* Header */}
             <div className="case__header flex flex--center-middle wrapper">
@@ -123,7 +131,8 @@ export default class Case extends React.Component {
               }
             })}
           </div>
-        </ScrollWrapper>
+          {/* </ScrollWrapper> */}
+        </div>
       </div>
     );
   }

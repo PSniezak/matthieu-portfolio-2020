@@ -1,16 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { AppContext } from "../context/app-context";
 import Parallax from "./Parallax";
 
 const ImagesParallax = ({ images, title }) => {
   const context = useContext(AppContext);
 
-  const maxs = [100, 100, 100, 100, 100, 100];
-  const mins = [-200, -400, -300, -200, -100, 0];
+  const scrollRef = useRef();
+
+  const speed = [1, 4, 1, 4, 1, 3];
 
   return (
     <div className="imagesParallaxWrapper section">
-      <div className="wrapper  ">
+      <div
+        className="wrapper"
+        // data-scroll-target=".imagesParallaxWrapper"
+        // data-scroll-sticky
+        data-scroll
+        data-scroll-speed={-3}
+        data-scroll-offset={"-1000, 0"}
+      >
         <h2 className="imagesParallaxWrapper__title title title--medium center">
           {title}
         </h2>
@@ -18,16 +26,18 @@ const ImagesParallax = ({ images, title }) => {
       <div className="imagesParallax">
         {images.map((image, index) => {
           return (
-            <Parallax
-              max={maxs[index]}
-              min={mins[index]}
-              key={`slider_${index}`}
+            <div
+              key={`parallax_${index}`}
+              data-scroll
+              data-scroll-speed={speed[index]}
+              data-scroll-offset={"-1000, 0"}
               className="imagesParallax__image"
-              style={{ marginBottom: -maxs[index] + "px" }}
             >
-              <span className="colored-white">{index}</span>
-              <img src={image} />
-            </Parallax>
+              <div>
+                {/* <span className="colored-white">{index}</span> */}
+                <img src={image} />
+              </div>
+            </div>
           );
         })}
       </div>
@@ -38,3 +48,17 @@ const ImagesParallax = ({ images, title }) => {
 };
 
 export default ImagesParallax;
+
+// const maxs = [100, 100, 100, 100, 100, 100];
+// const mins = [-200, -400, -300, -200, -100, 0];
+
+//  <Parallax
+//    max={maxs[index]}
+//    min={mins[index]}
+//    key={`slider_${index}`}
+//    className="imagesParallax__image"
+//    style={{ marginBottom: -maxs[index] + "px" }}
+//  >
+//    <span className="colored-white">{index}</span>
+//    <img src={image} />
+//  </Parallax>;
