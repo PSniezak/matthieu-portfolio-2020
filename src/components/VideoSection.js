@@ -58,11 +58,15 @@ const VideoSection = ({ imgUrl, videoID }) => {
   const setVideoSize = () => {
     const videoWidth = video.current.offsetWidth;
     const maxHeight = image.current.offsetHeight;
+    const minHeigth = 350;
     const newHeight = videoWidth / ratio;
     if (newHeight > maxHeight) {
       console.log(maxHeight * ratio);
       setWidth(maxHeight * ratio);
       setHeight(maxHeight);
+    } else if (newHeight < minHeigth) {
+      setWidth(minHeigth * ratio);
+      setHeight(minHeigth);
     } else {
       setWidth(videoWidth);
       setHeight(videoWidth / ratio);
