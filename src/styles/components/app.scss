@@ -1,12 +1,14 @@
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden;
+  font-family: "Apercu";
 }
 
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  
+
   &.is-mobile {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -14,7 +16,16 @@ body {
   }
 }
 
-a, h1, h2, h3, h4, h5, textarea, input, p, span {
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+textarea,
+input,
+p,
+span {
   color: #ffffff;
 }
 

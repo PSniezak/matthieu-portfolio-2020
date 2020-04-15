@@ -1,0 +1,8 @@
+.contentTitle {
+  padding-top: 3 * $sectionPadding;
+  padding-bottom: $sectionPadding;
+
+  > div {
+    flex: 0 0 50%;
+  }
+}

@@ -1,0 +1,29 @@
+.imagesSliderWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.imagesSlider {
+  //   width: 300%;
+  //   transform: translateX(-33.33%);
+
+  .imagesSlider__image {
+    width: 100%;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  * {
+    outline: none;
+  }
+
+  .slick-list {
+    overflow: visible;
+  }
+
+  .slick-slide {
+    pointer-events: none;
+  }
+}

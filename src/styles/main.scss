@@ -1,16 +1,38 @@
 /* Core
 ------------------------------------------------- */
-@import 'core/reset';
-@import 'core/fonts';
-@import 'core/settings';
-@import 'core/functions';
+@import "core/reset";
+@import "core/fonts";
+@import "core/settings";
+@import "core/functions";
+
+/* Vendors
+------------------------------------------------- */
+@import "vendors/locomotive.scss";
+
+/* commons
+------------------------------------------------- */
+@import "commons/text";
+@import "commons/title";
+@import "commons/colored";
+@import "commons/padding-margin-helper";
+@import "commons/flex";
+@import "commons/wrapper";
+
+/* Pages
+------------------------------------------------- */
+@import "pages/case";
 
 /* Components
 ------------------------------------------------- */
-@import 'components/app';
-@import 'components/loader';
-@import 'components/header';
-@import 'components/about';
-@import 'components/showcaser';
-@import 'components/case';
-@import 'components/works';
+@import "components/app";
+@import "components/loader";
+@import "components/header";
+@import "components/about";
+@import "components/showcaser";
+@import "components/works";
+@import "components/imagesSlider";
+@import "components/videoSection";
+@import "components/contentTitleSection";
+@import "components/imageSection";
+@import "components/imagesParallax";
+@import "components/cursor";

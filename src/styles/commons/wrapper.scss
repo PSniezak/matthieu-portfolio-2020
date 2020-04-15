@@ -1,0 +1,19 @@
+.wrapper {
+  max-width: $mainWidth + 2 * $minWrapperPadding;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  &.wrapper--small {
+    max-width: $smallWrapperWidth + 2 * $minWrapperPadding;
+  }
+
+  &.wrapper--vsmall {
+    max-width: 300 + 2 * $minWrapperPadding;
+    background: blue;
+  }
+}
+
+.section {
+  padding-top: $sectionPadding;
+  padding-bottom: $sectionPadding;
+}
