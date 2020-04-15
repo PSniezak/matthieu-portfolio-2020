@@ -1,6 +1,10 @@
 .videoSection__imageWrapper {
   position: relative;
-  cursor: pointer;
+  .videoSection__video {
+    iframe {
+      pointer-events: none;
+    }
+  }
 
   &.not-playing {
     .videoSection__video {
@@ -22,5 +26,17 @@
     top: 0;
     left: 50%;
     transform: translate(-50%);
+    width: 100%;
+    height: 100%;
+  }
+
+  #vimeo {
+    width: 100%;
+    height: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
   }
 }

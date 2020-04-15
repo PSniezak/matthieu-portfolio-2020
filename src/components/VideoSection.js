@@ -1,29 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import anime from "animejs";
 import Vimeo from "@u-wave/react-vimeo";
+import Cursor from "./Cursor";
 
-const VideoSection = ({ imgUrl, videoID }) => {
-  const ratio = 16 / 9;
+const VideoSection = ({ imgUrl, videoID, setCursor, ...props }) => {
   const video = useRef();
   const image = useRef();
 
-  const [width, setWidth] = useState("100%");
   const [videoVisible, setVideoVisible] = useState(false);
-  const [height, setHeight] = useState(700 / ratio);
 
   const showVideo = () => {
-    setVideoSize();
     setVideoVisible(true);
     animation(false);
+    setCursor(true, "Pause");
+  };
+
+  const toggleVideo = () => {
+    videoVisible ? hideVideo() : showVideo();
   };
 
   const hideVideo = () => {
     setVideoVisible(false);
     animation(true);
+    setCursor(true, "Play");
   };
 
   useEffect(() => {
-    setVideoSize();
     if (videoVisible) {
       animation(false);
     } else {
@@ -55,32 +57,6 @@ const VideoSection = ({ imgUrl, videoID }) => {
     });
   };
 
-  const setVideoSize = () => {
-    const videoWidth = video.current.offsetWidth;
-    const maxHeight = image.current.offsetHeight;
-    const minHeigth = 350;
-    const newHeight = videoWidth / ratio;
-    if (newHeight > maxHeight) {
-      console.log(maxHeight * ratio);
-      setWidth(maxHeight * ratio);
-      setHeight(maxHeight);
-    } else if (newHeight < minHeigth) {
-      setWidth(minHeigth * ratio);
-      setHeight(minHeigth);
-    } else {
-      setWidth(videoWidth);
-      setHeight(videoWidth / ratio);
-    }
-  };
-
-  useEffect(() => {
-    setVideoSize();
-    window.addEventListener("resize", setVideoSize);
-    return () => {
-      window.removeEventListener("resize", setVideoSize);
-    };
-  }, [video, image.current]);
-
   return (
     <div className="videoSection section">
       <div
@@ -88,7 +64,7 @@ const VideoSection = ({ imgUrl, videoID }) => {
           videoVisible ? "playing" : "not-playing"
         }`}
         ref={video}
-        onClick={showVideo}
+        onClick={toggleVideo}
       >
         <img
           className="videoSection__image"
@@ -106,8 +82,6 @@ const VideoSection = ({ imgUrl, videoID }) => {
             onEnd={hideVideo}
             onPause={hideVideo}
             controls={false}
-            width={`${width}px`}
-            height={`${height}px`}
           />
         </div>
       </div>
