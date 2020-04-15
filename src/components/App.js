@@ -7,11 +7,13 @@ import { AppContext } from "context/app-context";
 import TransitionRouter from "components/TransitionRouter";
 import Header from "components/Header";
 import Home from "components/Home";
-import Case from "components/Case";
+import Case from "components/Pages/Case";
 import Works from "components/Works";
 import About from "components/About";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 import { isMobile } from "utils/is-mobile";
+import ReactCursorPosition from "react-cursor-position";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -126,6 +128,7 @@ export default class App extends React.Component {
     return (
       <div className={`app`}>
         <div className="app__overlay"></div>
+
         <AppContext.Provider value={appContext}>
           {loaderActive && current === "home" && !previous ? "" : <Header />}
           <Location>
@@ -147,6 +150,7 @@ export default class App extends React.Component {
                       state={state}
                       finishLoader={this.finishLoader}
                     />
+
                     {<Case path="case/:slug" state={state} />}
                     {<Works path="/works" state={state} />}
                     {<About path="/about" state={state} />}

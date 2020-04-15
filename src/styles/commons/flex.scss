@@ -1,0 +1,12 @@
+.flex {
+  display: flex;
+
+  &.flex--center-middle {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.flex--middle {
+    align-items: center;
+  }
+}

@@ -64,6 +64,8 @@ class ScrollWrapper extends React.Component {
     this.y = round(this.y, 1000);
 
     this.ref.current.style.transform = `translate3d(0, ${this.y}px, 0)`;
+
+    this.context.scrollY = this.y || 0;
   };
 
   render() {

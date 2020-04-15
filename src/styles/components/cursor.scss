@@ -1,0 +1,27 @@
+.cursor {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 99999;
+  background: $c-red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  left: -50px;
+  top: -50px;
+  pointer-events: none;
+  opacity: 0;
+  //   transition: opacity 0.4s ease;
+}
+
+.cursor--visible {
+  opacity: 1;
+}
+
+.with-cursor {
+  position: relative;
+  cursor: none;
+}
