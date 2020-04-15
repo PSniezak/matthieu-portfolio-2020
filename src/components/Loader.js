@@ -18,10 +18,16 @@ export default class Loader extends React.Component {
     this.backward = React.createRef();
 
     console.log("-- Generating image list --");
-    let images = data.projects.map(e => `${e.mainImage}`);
+    let images = [];
+
+    data.projects.forEach(el => {
+      images.push(el.mainImage);
+
+      images = images.concat(el.slideshow);
+    });
 
     console.log("-- Generating video list --");
-    let videos = data.projects.map(e => `${e.mainVideo}`);
+    let videos = data.projects.map(el => `${el.mainVideo}`);
 
     this.state = {
       images,
@@ -145,6 +151,8 @@ export default class Loader extends React.Component {
           {imageList}
           {videoList}
           <p style={{ fontFamily: "MonumentExtended" }}>Monument</p>
+          <p style={{ fontFamily: "Authenia" }}>Authenia</p>
+          <p style={{ fontFamily: "Apercu" }}>Apercu</p>
         </div>
       </React.Fragment>
     );
