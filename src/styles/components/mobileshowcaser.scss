@@ -4,22 +4,33 @@
   margin-top: calc((100vh - #{$showcaserHeight}) / 2);
 
   &__slider {
+    height: $showcaserHeight;
+    width: 100vw;
+
     &__slide {
-      position: absolute;
-      top: 0;
+      position: relative;
+      height: $showcaserHeight;
 
       img {
-
+        margin-top: -2px;
+        height: 102%;
       }
 
       > div {
+        position: absolute;
+        top: 40%;
+        margin: 0 auto;
+        left: 0; right: 0;
+        transform: translateY(50%);
+        text-align: center;
+
         > * {
           display: inline-block;
         }
         span {
           vertical-align: top;
           font-family: "Authenia";
-          font-size: 20px;
+          font-size: 15px;
           color: #FFFFFF;
           padding-top: 6px;
           margin-right: 6px;
@@ -27,7 +38,7 @@
         h2 {
           vertical-align: top;
           font-family: "MonumentExtended", serif;
-          font-size: 110px;
+          font-size: 40px;
           text-transform: uppercase;
           text-decoration: none;
   
@@ -35,10 +46,56 @@
         }
       }
     }
+
+    .slick-dots {
+      right: 15px;
+      bottom: -35px;
+      width: auto;
+
+      li {
+        margin: 0;
+
+        button {
+          width: 15px;
+          height: 3px;
+          padding-left: 5px;
+
+          &:before {
+            content: "";
+            height: 3px;
+            width: 15px;
+            opacity: 1;
+            background-color: $c-white;
+            transition: background-color 1s ease;
+          }
+        }
+
+        &.slick-active {
+          button {
+            &:before {
+              background-color: $c-red;
+            }
+          }
+        }
+      }
+    }
   }
 
   &__link {
-    display: absolute;
-    bottom: 0;
+    display: block;
+    position: absolute;
+    bottom: 21px;
+    text-decoration: none;
+    left: calc(50% - 40px);
+    z-index: 10;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 80px;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    background: $c-red;
   }
 }

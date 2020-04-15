@@ -89,7 +89,7 @@ export default class MobileShowcaser extends React.Component {
     let { projects } = data;
 
     let settings = {
-      dots: false,
+      dots: true,
       infinite: true,
       speed: 1000,
       slidesToShow: 1,
@@ -97,7 +97,10 @@ export default class MobileShowcaser extends React.Component {
       arrows: false,
       centerPadding: "0px",
       useCSS: true,
-      useTransform: true
+      useTransform: true,
+      afterChange: index => {
+        this.setState({ current: index });
+      }
     };
 
     return (
@@ -109,7 +112,7 @@ export default class MobileShowcaser extends React.Component {
                 <img src={project.mainImage} alt="" />
                 <div>
                   <span>{`0${i + 1}`}</span>
-                  <h2 data-title={`${project.name}/`}>{project.name}/</h2>
+                  <h2>{project.name}/</h2>
                 </div>
               </div>
             );
