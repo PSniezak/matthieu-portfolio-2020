@@ -117,7 +117,9 @@ export default class Loader extends React.Component {
         key={index}
         src={video}
         type={"video/mp4"}
-        onLoadedData={() => this.loadingProgress(video, index)}
+        autoPlay
+        muted
+        onCanPlay={() => this.loadingProgress(video, index)}
       ></video>
     ));
 
@@ -139,9 +141,10 @@ export default class Loader extends React.Component {
             </ul>
           </div>
         </div>
-        <div style={{ display: "none" }}>
+        <div style={{ opacity: 0 }}>
           {imageList}
           {videoList}
+          <p style={{ fontFamily: "MonumentExtended" }}>Monument</p>
         </div>
       </React.Fragment>
     );

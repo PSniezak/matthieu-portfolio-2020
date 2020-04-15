@@ -82,15 +82,15 @@ export default class Showcaser extends React.Component {
 
     this.status = "entering";
 
-    timeline({}).add({
-      targets: this.ref.current.children,
-      opacity: [0, 1],
-      translateY: [80, 0],
-      translateZ: 0,
-      easing: "easeOutQuart",
-      duration: 1000,
-      delay
-    });
+    // timeline({}).add({
+    //   targets: this.ref.current.children,
+    //   opacity: [0, 1],
+    //   translateY: [80, 0],
+    //   translateZ: 0,
+    //   easing: "easeOutQuart",
+    //   duration: 1000,
+    //   delay
+    // });
   }
 
   animateOut() {
