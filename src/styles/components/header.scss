@@ -8,7 +8,7 @@
   height: calc((100vh - #{$showcaserHeight}) / 2);
   max-width: $mainWidth;
   display: block;
-  z-index: 10;
+  z-index: 20;
 
   .is-mobile & {
     position: fixed;
