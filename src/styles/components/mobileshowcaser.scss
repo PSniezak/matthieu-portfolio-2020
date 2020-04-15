@@ -1,0 +1,44 @@
+.mobileshowcaser {
+  position: relative;
+  width: 100%;
+  margin-top: calc((100vh - #{$showcaserHeight}) / 2);
+
+  &__slider {
+    &__slide {
+      position: absolute;
+      top: 0;
+
+      img {
+
+      }
+
+      > div {
+        > * {
+          display: inline-block;
+        }
+        span {
+          vertical-align: top;
+          font-family: "Authenia";
+          font-size: 20px;
+          color: #FFFFFF;
+          padding-top: 6px;
+          margin-right: 6px;
+        }
+        h2 {
+          vertical-align: top;
+          font-family: "MonumentExtended", serif;
+          font-size: 110px;
+          text-transform: uppercase;
+          text-decoration: none;
+  
+          color: $c-white;
+        }
+      }
+    }
+  }
+
+  &__link {
+    display: absolute;
+    bottom: 0;
+  }
+}

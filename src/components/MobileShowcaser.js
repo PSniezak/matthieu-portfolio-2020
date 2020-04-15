@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "@reach/router";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { AppContext } from "context/app-context";
 
@@ -17,7 +20,9 @@ export default class MobileShowcaser extends React.Component {
 
     this.ref = React.createRef();
 
-    this.state = {};
+    this.state = {
+      current: 0
+    };
   }
 
   componentDidMount() {
@@ -80,17 +85,42 @@ export default class MobileShowcaser extends React.Component {
   }
 
   render() {
+    let { current } = this.state;
+    let { projects } = data;
+
+    let settings = {
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      slidesToShow: 1,
+      accessibility: false,
+      arrows: false,
+      centerPadding: "0px",
+      useCSS: true,
+      useTransform: true
+    };
+
     return (
       <div className={`mobileshowcaser`} ref={this.ref}>
-        <div className={`mobileshowcaser__slider`}>
-          {data.projects.map((project, i) => {
+        <Slider {...settings} className={`mobileshowcaser__slider`}>
+          {projects.map((project, i) => {
             return (
-              <Link to={`/case/${project.slug}`} key={i}>
-                {project.name}/
-              </Link>
+              <div className={`mobileshowcaser__slider__slide`} key={i}>
+                <img src={project.mainImage} alt="" />
+                <div>
+                  <span>{`0${i + 1}`}</span>
+                  <h2 data-title={`${project.name}/`}>{project.name}/</h2>
+                </div>
+              </div>
             );
           })}
-        </div>
+        </Slider>
+        <Link
+          className={"mobileshowcaser__link"}
+          to={`/case/${projects[current].slug}`}
+        >
+          See project
+        </Link>
       </div>
     );
   }

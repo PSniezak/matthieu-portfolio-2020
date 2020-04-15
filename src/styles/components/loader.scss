@@ -18,6 +18,12 @@
         margin-bottom: 30px;
       }
 
+      @include customMediaQuery(480px) {
+        &:first-of-type {
+          margin-bottom: 15px;
+        }
+      }
+
       li {
         height: 324px;
         width: 701px;
@@ -25,6 +31,7 @@
         background-color: $c-white;
 
         @include customMediaQuery(480px) {
+          margin-left: 15px;
           height: 134px;
           width: 292px;
         }

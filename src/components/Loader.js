@@ -147,7 +147,7 @@ export default class Loader extends React.Component {
             </ul>
           </div>
         </div>
-        <div style={{ opacity: 0 }}>
+        <div style={{ display: "none" }}>
           {imageList}
           {videoList}
           <p style={{ fontFamily: "MonumentExtended" }}>Monument</p>
