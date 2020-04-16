@@ -1,10 +1,13 @@
 import React from "react";
+import anime from "animejs";
 
 import { AppContext } from "context/app-context";
 
 import ScrollWrapper from "components/ScrollWrapper";
 
 import { timeline } from "utils/timeline";
+
+import { data } from "data";
 
 export default class About extends React.Component {
   static contextType = AppContext;
@@ -18,6 +21,9 @@ export default class About extends React.Component {
     this.bgRef = React.createRef();
     this.overlayRef = React.createRef();
     this.content = React.createRef();
+    this.slider = React.createRef();
+    this.forward = React.createRef();
+    this.backward = React.createRef();
 
     this.state = {};
   }
@@ -41,8 +47,36 @@ export default class About extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const { bgRef, content, slider, forward, backward } = this;
+
+    const blockWidth = forward.current.children[0].offsetWidth;
+    const blockMargin = window
+      .getComputedStyle(forward.current.children[0])
+      .getPropertyValue("margin-left");
+    const blockTotal = blockWidth + parseInt(blockMargin);
+
+    anime({
+      targets: forward.current,
+      translateX: `-${blockTotal}px`,
+      loop: true,
+      duration: 3000,
+      easing: "linear",
+      direction: "reverse"
+    });
+
+    anime({
+      targets: backward.current,
+      translateX: `-${blockTotal}px`,
+      loop: true,
+      duration: 3000,
+      easing: "linear"
+    });
+  }
+
   animateIn(delay = 0) {
     const { transitionDuration } = this.context;
+    const { bgRef, content, slider, forward, backward } = this;
     if (this.status === "entering") return;
 
     this.status = "entering";
@@ -52,7 +86,7 @@ export default class About extends React.Component {
 
     timeline({})
       .add({
-        targets: this.bgRef.current,
+        targets: bgRef.current,
         translateY: translateY,
         translateZ: 0,
         easing: easing,
@@ -60,7 +94,7 @@ export default class About extends React.Component {
         delay
       })
       .add({
-        targets: this.content.current,
+        targets: [slider.current, content.current],
         opacity: [0, 1],
         easing: easing,
         duration: transitionDuration,
@@ -94,10 +128,59 @@ export default class About extends React.Component {
         <div className={`about__overlay`} ref={this.overlayRef}></div>
 
         <ScrollWrapper state={state}>
-          <div classNam={`about__content`} ref={this.content}>
-            <p>About</p>
+          <div className={`about__content`} ref={this.content}>
+            <h2>About/</h2>
+
+            <div className={`about__infos`}>
+              <h3>
+                Motion designer <br /> 2D/3D based in Paris{" "}
+              </h3>
+
+              <p>
+                Matthieu Tourdes, graduated from HETIC and after one year at 17
+                Mars I’m now art director motion as freelancer.
+                <br />
+                <br />
+                During my profesionnal experience, I had the privilege to work
+                for famous brands like Mc Donald’s, Bugatti, Citroën...
+              </p>
+
+              <ul>
+                {data.global.socials.map((social, i) => (
+                  <li
+                    key={i}
+                    style={{ width: `${100 / data.global.socials.length}%` }}
+                  >
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {social.content}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </ScrollWrapper>
+
+        <div className={`about__slider`} ref={this.slider}>
+          <div>
+            <ul ref={this.forward}>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <ul ref={this.backward}>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }

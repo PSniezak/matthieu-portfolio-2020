@@ -5,6 +5,15 @@
   height: 100%;
   top: 0; right: 0; left: 0; bottom: 0;
 
+  @include only-phone {
+    height: 100vh;
+  }
+
+  .is-mobile & {
+    position: relative;
+  }
+
+
   &__bg {
     top: 0; right: 0; left: 0; bottom: 0;
     width: 100%;
@@ -35,7 +44,120 @@
   }
 
   &__content {
-      min-height: 100vh;
-      overflow: hidden;
+    margin: 0 auto;
+    max-width: $maxMainWidth;
+    padding-bottom: 60px;
+    
+    h2 {
+      padding-top: 300px;
+      padding-bottom: 180px;
+      font-family: "MonumentExtended", sans-serif;
+      font-size: 110px;
+      color: $c-white;
+      text-align: center;
+
+      @include only-phone {
+        font-size: 40px;
+        padding-top: 176px;
+        padding-bottom: 64px;
+      }
+    }
+
+  }
+
+  &__infos {
+    margin-left: calc(100% / 2);
+    max-width: calc(#{$mainWidth} / 2);
+
+    @include only-phone {
+      margin-left: 33%;
+      max-width: 60%;
+    }
+
+    h3 {
+      font-family: "Apercu";
+      font-size: 50px;
+      color: $c-white;
+      line-height: 55px;
+      margin-bottom: 48px;
+
+      @include only-phone {
+        font-size: 20px;
+        line-height: 32px;
+        margin-bottom: 5px;
+      }
+    }
+
+    p {
+      font-family: "Apercu";
+      font-size: 16px;
+      color: $c-white;
+      line-height: 26px;
+
+      @include only-phone {
+        font-size: 15px;
+        line-height: 26px;
+      }
+    }
+
+    ul {
+      margin-top: 158px;
+
+      @include only-phone {
+        margin-top: 56px;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+          width: fit-content !important;
+        }
+      }
+
+      li {
+        display: inline-block;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    transform-origin: center;
+    transform: translateY(-50%) rotate(32deg);
+
+    @include only-phone {
+      transform: rotate(32deg);
+    }
+
+    ul {
+      width: fit-content;
+      display: flex;
+      list-style-type: none;
+      margin-left: -350px;
+      
+      &:first-of-type {
+        margin-bottom: 30px;
+
+        @include only-phone {
+          margin-bottom: 15px;
+        }
+      }
+
+      li {
+        opacity: 0.3;
+        height: 279px;
+        width: 609px;
+        margin-left: 30px;
+        border: 1px solid $c-white;
+
+        @include only-phone {
+          margin-left: 15px;
+          height: 134px;
+          width: 292px;
+        }
+      }
+    }
   }
 }

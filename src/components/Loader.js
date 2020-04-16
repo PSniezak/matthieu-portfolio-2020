@@ -53,7 +53,7 @@ export default class Loader extends React.Component {
       targets: forward.current,
       easing: "easeInQuart",
       duration: 1500,
-      translateX: [`-${blockTotal * 5}px`, 0],
+      translateX: [`-${blockTotal * 7}px`, 0],
       complete: () => {
         anime({
           targets: forward.current,
@@ -70,7 +70,7 @@ export default class Loader extends React.Component {
       targets: backward.current,
       easing: "easeInQuart",
       duration: 1500,
-      translateX: [`${blockTotal * 5}px`, 0],
+      translateX: [`${blockTotal * 7}px`, 0],
       complete: () => {
         anime({
           targets: backward.current,
@@ -138,8 +138,14 @@ export default class Loader extends React.Component {
               <li></li>
               <li></li>
               <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
             </ul>
             <ul ref={this.backward}>
+              <li></li>
+              <li></li>
+              <li></li>
               <li></li>
               <li></li>
               <li></li>

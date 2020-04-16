@@ -25,8 +25,8 @@ export default class App extends React.Component {
         speedY: 0,
         transitionDuration: 800,
         wheelActive: false,
-        // loaderActive: true,
-        loaderActive: false,
+        loaderActive: true,
+        // loaderActive: false,
         location: {
           current: "",
           previous: "",
