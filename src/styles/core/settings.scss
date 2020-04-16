@@ -9,6 +9,7 @@ $c-black: #070606;
 $c-red: #d91f26;
 $c-white: #ffffff;
 $c-grey-168: #a8a8a8;
+$c-dark-grey: #D8D8D8;
 
 body {
   background-color: $c-black;
@@ -36,9 +37,3 @@ $media-queries: (
     o: 4000px,
   ),
 );
-
-@mixin customHeightMediaQuery($size) {
-  @media screen and (max-height: #{$size}) {
-    @content;
-  }
-}

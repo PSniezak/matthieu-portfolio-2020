@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "@reach/router";
+import anime from "animejs";
 
 import { AppContext } from "context/app-context";
 
 import ScrollWrapper from "components/ScrollWrapper";
 
 import { timeline } from "utils/timeline";
+
+import { data } from "data";
 
 export default class Works extends React.Component {
   static contextType = AppContext;
@@ -15,6 +19,7 @@ export default class Works extends React.Component {
     super(props);
 
     this.ref = React.createRef();
+    this.content = React.createRef();
 
     this.state = {};
   }
@@ -23,13 +28,15 @@ export default class Works extends React.Component {
     const { previous } = this.context.location;
     const { state } = this.props;
 
+    console.log(previous);
+
     if (previous) {
       if (state === "exiting") {
         this.animateOut();
       }
 
       if (state === "entering") {
-        this.animateIn(400);
+        this.animateIn(previous && previous === "about" ? 1000 : 400);
       }
     } else {
       if (state === "entered") {
@@ -44,13 +51,13 @@ export default class Works extends React.Component {
     this.status = "entering";
 
     timeline({}).add({
-      targets: this.ref.current.children,
+      targets: this.content.current.children,
       opacity: [0, 1],
       translateY: [80, 0],
       translateZ: 0,
       easing: "easeOutQuart",
       duration: 1000,
-      delay
+      delay: anime.stagger(200, { start: delay })
     });
   }
 
@@ -73,12 +80,22 @@ export default class Works extends React.Component {
   render() {
     const { state } = this.props;
 
+    let projects = data.projects.map((project, i) => (
+      <Link key={i} to={`/case/${project.slug}`} className={"works__project"}>
+        <img src={project.mainImage} alt="" />
+        <div>
+          <span>{`0${i + 1}`}</span>
+          <h3>{project.name}/</h3>
+        </div>
+      </Link>
+    ));
+
     return (
       <div className={`works`} ref={this.ref}>
         <ScrollWrapper state={state}>
           <div className={`works__content`} ref={this.content}>
-            <h2>Works</h2>
-            <div></div>
+            <h2>Works/</h2>
+            {projects}
           </div>
         </ScrollWrapper>
       </div>

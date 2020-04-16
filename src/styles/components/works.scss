@@ -11,8 +11,49 @@
   }
 
   &__content {
-    div {
-      height: 2000px;
+    padding-bottom: 71px;
+    
+    h2 {
+      padding-top: 300px;
+      padding-bottom: 160px;
+      font-family: "MonumentExtended", sans-serif;
+      font-size: 110px;
+      color: $c-white;
+      text-align: center;
+    }
+  }
+
+  &__project {
+    display: block;
+    height: fit-content;
+    margin-left: calc((100vw - #{$mainWidth}) / 2 + #{$mainWidth} * 0.333);
+    margin-bottom: 71px;
+    border-bottom: 1px solid $c-dark-grey;
+    cursor: url("../../images/cursor_project.png") 64 64, pointer;
+
+    img {
+      max-width: calc(#{$mainWidth} * 0.666);
+      height: auto;
+    }
+
+    > div {
+      margin: 32px 0 60px 0;
+      span {
+        display: inline-block;
+        vertical-align: top;
+        font-family: "Authenia";
+        font-size: 18px;
+        color: $c-white;
+        margin-top: 4px;
+        margin-right: 4px;
+      }
+      h3 {
+        display: inline-block;
+        vertical-align: top;
+        font-family: "MonumentExtended", sans-serif;
+        font-size: 62px;
+        color: $c-white;
+      }
     }
   }
 }

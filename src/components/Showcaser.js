@@ -59,7 +59,7 @@ export default class Showcaser extends React.Component {
       }
 
       if (state === "entering") {
-        this.animateIn(400);
+        this.animateIn(previous && previous === "about" ? 1000 : 400);
       }
     } else {
       if (state === "entered") {

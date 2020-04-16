@@ -31,7 +31,6 @@
         display: block;
         margin: 0 100px;
         opacity: 0;
-        cursor: url("../../images/cursor_project.png") 64 64, pointer;
 
         > * {
           display: inline-block;
@@ -45,6 +44,7 @@
           margin-right: 6px;
         }
         h2 {
+          cursor: url("../../images/cursor_project.png") 64 64, pointer;
           vertical-align: top;
           font-family: "MonumentExtended", serif;
           font-size: 110px;
