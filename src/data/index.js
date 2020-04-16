@@ -30,7 +30,7 @@ export const data = {
       description:
         "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive.",
       mainVideo: require("images/eclipse_home.mp4"),
-      mainImage: require("images/eclipse_main.jpg"),
+      mainImage: require("images/eclipse_main.png"),
       slideshow: [
         require("images/eclipse_slideshow1.png"),
         require("images/eclipse_slideshow2.png"),
@@ -48,7 +48,7 @@ export const data = {
 
         {
           type: "video",
-          image: require("images/eclipse_main.jpg"),
+          image: require("images/eclipse_main.png"),
           video: "57399324"
         },
         {
@@ -61,22 +61,22 @@ export const data = {
         {
           type: "slider",
           images: [
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg")
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png")
           ]
         },
         {
           type: "paralax",
           title: "WHERE HUMANS NEED TO RECOVER",
           images: [
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg"),
-            require("images/eclipse_main.jpg")
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png")
           ]
         },
 
@@ -88,7 +88,7 @@ export const data = {
         },
         {
           type: "image",
-          image: require("images/eclipse_main.jpg")
+          image: require("images/eclipse_main.png")
         }
       ],
 
@@ -115,7 +115,7 @@ export const data = {
       slug: "syfy",
       tags: ["short", "design", "CGI"],
       mainVideo: require("images/eclipse_home.mp4"),
-      mainImage: require("images/syfy_main.jpg"),
+      mainImage: require("images/syfy_main.png"),
       slideshow: [
         require("images/eclipse_slideshow2.png"),
         require("images/eclipse_slideshow3.png"),
@@ -138,32 +138,32 @@ export const data = {
         },
         {
           type: "image",
-          images: require("images/syfy_main.jpg")
+          images: require("images/syfy_main.png")
         },
         {
           type: "slider",
           images: [
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg")
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png")
           ]
         },
         {
           type: "paralax",
           title: "WHERE HUMANS NEED TO RECOVER",
           images: [
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg"),
-            require("images/syfy_main.jpg")
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png"),
+            require("images/syfy_main.png")
           ]
         },
         {
           type: "video",
-          image: require("images/syfy_main.jpg"),
+          image: require("images/syfy_main.png"),
           video: "57399324"
         },
         {
