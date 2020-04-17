@@ -32,6 +32,10 @@
     border-bottom: 1px solid $c-dark-grey;
     cursor: url("../../images/cursor_project.png") 64 64, pointer;
 
+    @include customMediaQuery($maxMainWidth) {
+      margin-left: calc((100% - #{$mainWidth}) / 2 + #{$mainWidth} * 1/3);
+    }
+
     img {
       max-width: calc(#{$mainWidth} * 2/3);
       width: 100%;

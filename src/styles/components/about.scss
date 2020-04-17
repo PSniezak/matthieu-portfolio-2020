@@ -69,6 +69,10 @@
     margin-left: calc(100% / 2);
     max-width: calc(#{$mainWidth} / 2);
 
+    @include customMediaQuery($mainWidth) {
+      max-width: calc(85% / 2);
+    }
+
     @include only-phone {
       margin-left: 33%;
       max-width: 60%;

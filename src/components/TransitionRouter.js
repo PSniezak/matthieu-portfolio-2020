@@ -65,19 +65,19 @@ class TransitionRouter extends React.Component {
       </React.Fragment>
     );
 
-    if (!isMobile) {
-      element = (
-        <TransitionGroup className={className}>
-          <CSSTransition
-            key={location.pathname}
-            timeout={transitionDuration}
-            {...rest}
-          >
-            {state => children(state)}
-          </CSSTransition>
-        </TransitionGroup>
-      );
-    }
+    // if (!isMobile) {
+    element = (
+      <TransitionGroup className={className}>
+        <CSSTransition
+          key={location.pathname}
+          timeout={transitionDuration}
+          {...rest}
+        >
+          {state => children(state)}
+        </CSSTransition>
+      </TransitionGroup>
+    );
+    // }
 
     return element;
   }
