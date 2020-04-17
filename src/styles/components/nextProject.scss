@@ -1,0 +1,25 @@
+.nextProject {
+  background: $c-red;
+  padding-top: 2.4 * $sectionPadding;
+  padding-bottom: 2.4 * $sectionPadding;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+  }
+
+  .nextProject__number {
+    vertical-align: top;
+    font-family: "Authenia";
+    font-size: 15px;
+    color: #ffffff;
+    padding-top: 6px;
+    margin-right: 6px;
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    transform: translateX(-100%);
+  }
+}

@@ -2,7 +2,28 @@
   padding-top: 3 * $sectionPadding;
   padding-bottom: $sectionPadding;
 
-  > div {
-    flex: 0 0 50%;
+  &.contentTitle--small,
+  &.contentTitle--light {
+    padding-top: $sectionPadding;
+    padding-bottom: $sectionPadding;
+
+    .contentTitle__title {
+      .title--small {
+        font-size: 22px;
+      }
+    }
+  }
+
+  &.contentTitle--light {
+    .divider {
+      border-color: $c-grey-168;
+      opacity: 0.5;
+    }
+  }
+
+  .flex {
+    > div {
+      flex: 0 0 50%;
+    }
   }
 }

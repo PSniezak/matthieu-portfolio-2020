@@ -42,6 +42,7 @@ export const data = {
       sections: [
         {
           type: "content",
+          theme: "red",
           content:
             "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive."
         },
@@ -60,6 +61,7 @@ export const data = {
 
         {
           type: "slider",
+          isFullPage: true,
           images: [
             require("images/eclipse_main.png"),
             require("images/eclipse_main.png"),
@@ -87,26 +89,47 @@ export const data = {
           image: ""
         },
         {
+          type: "slider",
+          isFullPage: false,
+          images: [
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png"),
+            require("images/eclipse_main.png")
+          ]
+        },
+        {
           type: "image",
           image: require("images/eclipse_main.png")
-        }
-      ],
-
-      credit: [
-        {
-          field: "Film",
-          value: "Matthieu Tourdes",
-          url: "http://google.fr"
         },
         {
-          field: "Score",
-          value: "Echoic audio",
-          url: "http://google.fr"
+          type: "content-title",
+          title: "SPECIAL THANKS",
+          theme: "small",
+          content:
+            "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film."
         },
         {
-          field: "Edit",
-          value: "Fredoch",
-          url: "http://google.fr"
+          type: "content-title",
+          title: "FINAL FRAMES",
+          theme: "light",
+          content: [
+            {
+              field: "Film",
+              value: "Matthieu Tourdes"
+            },
+            {
+              field: "Score",
+              value: "Echoic audio",
+              url: "http://google.fr"
+            },
+            {
+              field: "Edit",
+              value: "Fredoch",
+              url: "http://google.fr"
+            }
+          ]
         }
       ]
     },
@@ -127,6 +150,7 @@ export const data = {
       sections: [
         {
           type: "content",
+          theme: "red",
           content:
             "Eclipse is a short film that explores an alternate dark reality inspired by my personnal thoughts and imaginary. It has a personnal narrative which plays around the stunning ability of the human nature to recover and survive."
         },
@@ -142,6 +166,7 @@ export const data = {
         },
         {
           type: "slider",
+          isFullPage: true,
           images: [
             require("images/syfy_main.png"),
             require("images/syfy_main.png"),
@@ -168,26 +193,38 @@ export const data = {
         },
         {
           type: "content",
+          theme: "black",
           content:
             "The concept of the whole production of Eclipse has been challenging  as I was constantly progressing, analysing and evolving my skillsets while developping the imagery. The narrative started with a first vivid thought of a women asleep inside a tube. From there I imagined other key visuals to further shape and understand the world of Eclipse.",
           image: ""
-        }
-      ],
-      credit: [
-        {
-          field: "Film",
-          value: "Matthieu Tourdes",
-          url: "http://google.fr"
         },
         {
-          field: "Score",
-          value: "Echoic audio",
-          url: "http://google.fr"
+          type: "content-title",
+          title: "SPECIAL THANKS",
+          theme: "small",
+          content:
+            "Endless hours of work were poured into Eclipse. It was a special project that would allow me some fun to explore and learn more about the craft and CGI. Eclipse proved to be a giant ground of exploration and provided me a chance to connect with my imaginary as never before. It was an intense year of work full with moments of doubts and joy but I feel now how the many challenges, iterations and attention to details were vital to the final film."
         },
         {
-          field: "Edit",
-          value: "Fredoch",
-          url: "http://google.fr"
+          type: "content-title",
+          title: "FINAL FRAMES",
+          theme: "light",
+          content: [
+            {
+              field: "Film",
+              value: "Matthieu Tourdes"
+            },
+            {
+              field: "Score",
+              value: "Echoic audio",
+              url: "http://google.fr"
+            },
+            {
+              field: "Edit",
+              value: "Fredoch",
+              url: "http://google.fr"
+            }
+          ]
         }
       ]
     }

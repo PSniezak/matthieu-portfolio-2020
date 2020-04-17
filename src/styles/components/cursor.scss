@@ -1,6 +1,6 @@
 .cursor {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   position: absolute;
   pointer-events: none;
@@ -10,11 +10,17 @@
   align-items: center;
   justify-content: center;
   color: white;
-  left: -50px;
-  top: -50px;
+  left: -75px;
+  top: -75px;
   pointer-events: none;
   opacity: 0;
   //   transition: opacity 0.4s ease;
+
+  &.cursor--black {
+    opacity: 1;
+    background: $c-black;
+    color: $c-red;
+  }
 }
 
 .cursor--visible {
