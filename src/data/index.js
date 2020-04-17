@@ -61,7 +61,7 @@ export const data = {
 
         {
           type: "slider",
-          isFullPage: true,
+          isFullPage: false,
           images: [
             require("images/eclipse_main.png"),
             require("images/eclipse_main.png"),
@@ -74,11 +74,11 @@ export const data = {
           type: "paralax",
           title: "WHERE HUMANS NEED TO RECOVER",
           images: [
-            require("images/eclipse_main.png"),
-            require("images/eclipse_main.png"),
-            require("images/eclipse_main.png"),
-            require("images/eclipse_main.png"),
-            require("images/eclipse_main.png")
+            require("images/01.png"),
+            require("images/02.png"),
+            require("images/03.png"),
+            require("images/04.png"),
+            require("images/05.png")
           ]
         },
 
@@ -90,7 +90,7 @@ export const data = {
         },
         {
           type: "slider",
-          isFullPage: false,
+          isFullPage: true,
           images: [
             require("images/eclipse_main.png"),
             require("images/eclipse_main.png"),
@@ -99,10 +99,10 @@ export const data = {
             require("images/eclipse_main.png")
           ]
         },
-        {
-          type: "image",
-          image: require("images/eclipse_main.png")
-        },
+        // {
+        //   type: "image",
+        //   image: require("images/eclipse_main.png")
+        // },
         {
           type: "content-title",
           title: "SPECIAL THANKS",
@@ -166,7 +166,7 @@ export const data = {
         },
         {
           type: "slider",
-          isFullPage: true,
+          isFullPage: false,
           images: [
             require("images/syfy_main.png"),
             require("images/syfy_main.png"),
@@ -179,11 +179,11 @@ export const data = {
           type: "paralax",
           title: "WHERE HUMANS NEED TO RECOVER",
           images: [
-            require("images/syfy_main.png"),
-            require("images/syfy_main.png"),
-            require("images/syfy_main.png"),
-            require("images/syfy_main.png"),
-            require("images/syfy_main.png")
+            require("images/01.png"),
+            require("images/02.png"),
+            require("images/03.png"),
+            require("images/04.png"),
+            require("images/05.png")
           ]
         },
         {

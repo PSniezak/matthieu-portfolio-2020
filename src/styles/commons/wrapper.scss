@@ -15,7 +15,7 @@
         )}
     );
     max-width: calc(
-      #{($mainWidth + 2 * $minWrapperPadding)} + 50vw - #{(
+      #{($mainWidth + 2 * $minWrapperPadding)} + 50vw - #{$minWrapperPadding} - #{(
           (($mainWidth + 2 * $minWrapperPadding) / 2)
         )}
     );
