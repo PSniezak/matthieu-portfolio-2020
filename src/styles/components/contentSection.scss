@@ -1,0 +1,15 @@
+.contentSectionWrapper {
+  &.contentSectionWrapper--red {
+    padding-top: 60px;
+    background: $c-red;
+    padding-bottom: 450px;
+    margin-bottom: -400px;
+    overflow: hidden;
+  }
+
+  .contentSection__slider {
+  }
+}
+
+.contentSection {
+}

@@ -23,14 +23,12 @@ export default class Case extends React.Component {
 
     this.ref = React.createRef();
     this.scroll = React.createRef();
-    this.project = data.projects.find(x => x.slug === this.props.slug);
 
     this.state = {};
   }
 
   render() {
     const { state, slug } = this.props;
-    const { project } = this;
 
     return (
       <ReactCursorPosition>

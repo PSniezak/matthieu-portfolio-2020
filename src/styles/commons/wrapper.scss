@@ -1,10 +1,25 @@
 .wrapper {
   max-width: $mainWidth + 2 * $minWrapperPadding;
-  padding: 0 20px;
+  padding: 0 $minWrapperPadding;
   margin: 0 auto;
 
   &.wrapper--small {
     max-width: $smallWrapperWidth + 2 * $minWrapperPadding;
+  }
+
+  &.wrapper--right {
+    margin-left: 0;
+    padding-left: calc(
+      #{$minWrapperPadding} + 50vw - #{(
+          ($mainWidth + 2 * $minWrapperPadding) / 2
+        )}
+    );
+    max-width: calc(
+      #{($mainWidth + 2 * $minWrapperPadding)} + 50vw - #{$minWrapperPadding} - #{(
+          (($mainWidth + 2 * $minWrapperPadding) / 2)
+        )}
+    );
+    // max-width: $smallWrapperWidth + 2 * $minWrapperPadding;
   }
 
   &.wrapper--vsmall {
@@ -14,6 +29,10 @@
 }
 
 .section {
-  padding-top: $sectionPadding;
-  padding-bottom: $sectionPadding;
+  margin-top: $sectionPadding * 2;
+  margin-bottom: $sectionPadding * 2;
+}
+
+* {
+  box-sizing: border-box;
 }
