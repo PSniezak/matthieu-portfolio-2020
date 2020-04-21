@@ -1,6 +1,7 @@
 import React from "react";
 import { get } from "lodash";
 import locomotiveScroll from "locomotive-scroll";
+import anime from "animejs";
 import { AppContext } from "context/app-context";
 import ScrollWrapper from "components/ScrollWrapper";
 import { timeline } from "utils/timeline";
@@ -40,15 +41,26 @@ export default class CaseContent extends React.Component {
         : this.projectIndex + 1;
 
     this.nextProject = data.projects[this.nextProjectIndex];
+
+    this.scrollLoco = null;
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      const scroll = new locomotiveScroll({
-        el: this.scroll.current,
-        smooth: true
-      });
-    }, 1000);
+    if (this.scroll.current) {
+      setTimeout(() => {
+        // quick fix / withtout this height is fuckup maybe cause image not loaded?
+        this.scrollLoco = new locomotiveScroll({
+          el: this.scroll.current,
+          smooth: true
+        });
+      }, 2000);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.scrollLoco) {
+      this.scrollLoco.destroy();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -61,7 +73,7 @@ export default class CaseContent extends React.Component {
       }
 
       if (state === "entering") {
-        this.animateIn(400);
+        this.animateIn(1000);
       }
     } else {
       if (state === "entered") {
@@ -78,7 +90,7 @@ export default class CaseContent extends React.Component {
     });
   };
 
-  animateIn(delay = 0) {
+  animateIn(delay = 1000) {
     if (this.status === "entering") return;
 
     this.status = "entering";
@@ -90,11 +102,26 @@ export default class CaseContent extends React.Component {
       translateZ: 0,
       easing: "easeOutQuart",
       duration: 1000,
-      delay
+      delay: anime.stagger(200, { start: delay })
     });
   }
 
-  animateOut() {}
+  animateOut() {
+    const { transitionDuration } = this.context;
+    if (this.status === "exiting") return;
+
+    this.status = "exiting";
+
+    let duration = transitionDuration;
+
+    timeline({}).add({
+      targets: this.ref.current.children,
+      opacity: [1, 0],
+      translateY: [0, -80],
+      easing: "easeInOutQuart",
+      duration: duration
+    });
+  }
 
   render() {
     const { state, position } = this.props;
@@ -110,85 +137,87 @@ export default class CaseContent extends React.Component {
           color={cursorColor}
         />
         <div className={`case`} ref={this.ref}>
-          <div ref={this.scroll}>
-            {/* <ScrollWrapper state={state}> */}
-            <div className={`case__content`} ref={this.content}>
-              {/* Header */}
-              <div className="case__header flex flex--center-middle wrapper">
-                <h2 className="mainTitle">{get(project, "name")}/</h2>
-                <div className="case__headerTags">
-                  {get(project, "tags", []).map(tag => {
-                    return (
-                      <span key={tag} className="tag colored--grey uppercase">
-                        {tag}
-                      </span>
-                    );
-                  })}
+          <div>
+            <div ref={this.scroll}>
+              {/* <ScrollWrapper state={state}> */}
+              <div className={`case__content`} ref={this.content}>
+                {/* Header */}
+                <div className="case__header flex flex--center-middle wrapper">
+                  <h2 className="mainTitle">{get(project, "name")}/</h2>
+                  <div className="case__headerTags">
+                    {get(project, "tags", []).map(tag => {
+                      return (
+                        <span key={tag} className="tag colored--grey uppercase">
+                          {tag}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-              {get(project, "sections").map(section => {
-                switch (section.type) {
-                  case "content":
-                    return (
-                      <ContentSection
-                        content={get(section, "content")}
-                        theme={get(section, "theme")}
-                      />
-                    );
-                  case "content-title":
-                    return (
-                      <ContentTitleSection
-                        title={get(section, "title")}
-                        content={get(section, "content")}
-                        theme={get(section, "theme")}
-                      />
-                    );
-                  case "image":
-                    return <ImageSection image={get(section, "image")} />;
-                  case "slider":
-                    return (
-                      <div className="with-cursor">
-                        <ImagesSlider
+                {get(project, "sections").map(section => {
+                  switch (section.type) {
+                    case "content":
+                      return (
+                        <ContentSection
+                          content={get(section, "content")}
+                          theme={get(section, "theme")}
+                        />
+                      );
+                    case "content-title":
+                      return (
+                        <ContentTitleSection
+                          title={get(section, "title")}
+                          content={get(section, "content")}
+                          theme={get(section, "theme")}
+                        />
+                      );
+                    case "image":
+                      return <ImageSection image={get(section, "image")} />;
+                    case "slider":
+                      return (
+                        <div className="with-cursor">
+                          <ImagesSlider
+                            images={get(section, "images")}
+                            isFullPage={get(section, "isFullPage", false)}
+                            setCursor={this.setCursor}
+                          />
+                        </div>
+                      );
+                    case "paralax":
+                      return (
+                        <ImagesParallax
+                          title={get(section, "title")}
                           images={get(section, "images")}
-                          isFullPage={get(section, "isFullPage", false)}
-                          setCursor={this.setCursor}
                         />
-                      </div>
-                    );
-                  case "paralax":
-                    return (
-                      <ImagesParallax
-                        title={get(section, "title")}
-                        images={get(section, "images")}
-                      />
-                    );
-                  case "video":
-                    return (
-                      <div
-                        className="with-cursor"
-                        onMouseEnter={() => this.setCursor(true, "Play")}
-                        onMouseLeave={() => this.setCursor(false, "")}
-                      >
-                        <VideoSection
-                          imgUrl={get(section, "image")}
-                          videoID={get(section, "video")}
-                          setCursor={this.setCursor}
-                        />
-                      </div>
-                    );
+                      );
+                    case "video":
+                      return (
+                        <div
+                          className="with-cursor"
+                          onMouseEnter={() => this.setCursor(true, "Play")}
+                          onMouseLeave={() => this.setCursor(false, "")}
+                        >
+                          <VideoSection
+                            imgUrl={get(section, "image")}
+                            videoID={get(section, "video")}
+                            setCursor={this.setCursor}
+                          />
+                        </div>
+                      );
 
-                  default:
-                    break;
-                }
-              })}
-              <NextProject
-                index={this.nextProjectIndex + 1}
-                name={get(this.nextProject, "name")}
-                slug={get(this.nextProject, "slug")}
-                setCursor={this.setCursor}
-              />
+                    default:
+                      break;
+                  }
+                })}
+                <NextProject
+                  index={this.nextProjectIndex + 1}
+                  name={get(this.nextProject, "name")}
+                  slug={get(this.nextProject, "slug")}
+                  setCursor={this.setCursor}
+                />
+              </div>
+              {/* </ScrollWrapper> */}
             </div>
-            {/* </ScrollWrapper> */}
           </div>
         </div>
       </>
