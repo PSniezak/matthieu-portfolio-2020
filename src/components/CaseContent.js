@@ -1,5 +1,6 @@
 import React from "react";
 import { get } from "lodash";
+import locomotiveScroll from "locomotive-scroll";
 import { AppContext } from "context/app-context";
 import ScrollWrapper from "components/ScrollWrapper";
 import { timeline } from "utils/timeline";
@@ -10,8 +11,7 @@ import ContentSection from "./ContentBlock";
 import ContentTitleSection from "./ContentTitleSection";
 import ImageSection from "./ImageSection";
 import ImagesParallax from "./ImagesParallax";
-import locomotiveScroll from "locomotive-scroll";
-import ReactCursorPosition from "react-cursor-position";
+import NextProject from "./NextProject";
 import Cursor from "./Cursor";
 
 export default class CaseContent extends React.Component {
@@ -24,11 +24,22 @@ export default class CaseContent extends React.Component {
     this.ref = React.createRef();
     this.scroll = React.createRef();
     this.project = data.projects.find(x => x.slug === this.props.slug);
-
+    this.projectIndex = data.projects.findIndex(
+      x => x.slug === this.props.slug
+    );
     this.state = {
       cursorVisible: false,
-      cursorContent: ""
+      cursorContent: "",
+      cursorColor: "red"
     };
+
+    this.projectsLength = data.projects.length;
+    this.nextProjectIndex =
+      this.projectIndex + 1 > data.projects.length - 1
+        ? 0
+        : this.projectIndex + 1;
+
+    this.nextProject = data.projects[this.nextProjectIndex];
   }
 
   componentDidMount() {
@@ -59,10 +70,11 @@ export default class CaseContent extends React.Component {
     }
   }
 
-  setCursor = (visible, text) => {
+  setCursor = (visible, text, color = "red") => {
     this.setState({
       cursorVisible: visible,
-      cursorContent: text
+      cursorContent: text,
+      cursorColor: color
     });
   };
 
@@ -86,19 +98,24 @@ export default class CaseContent extends React.Component {
 
   render() {
     const { state, position } = this.props;
-    const { cursorContent, cursorVisible } = this.state;
+    const { cursorContent, cursorVisible, cursorColor } = this.state;
     const { project } = this;
 
     return (
       <>
-        <Cursor {...position} visible={cursorVisible} text={cursorContent} />
+        <Cursor
+          {...position}
+          visible={cursorVisible}
+          text={cursorContent}
+          color={cursorColor}
+        />
         <div className={`case`} ref={this.ref}>
           <div ref={this.scroll}>
             {/* <ScrollWrapper state={state}> */}
             <div className={`case__content`} ref={this.content}>
               {/* Header */}
               <div className="case__header flex flex--center-middle wrapper">
-                <h2 className="mainTitle">{get(project, "name")} </h2>
+                <h2 className="mainTitle">{get(project, "name")}/</h2>
                 <div className="case__headerTags">
                   {get(project, "tags", []).map(tag => {
                     return (
@@ -109,28 +126,33 @@ export default class CaseContent extends React.Component {
                   })}
                 </div>
               </div>
-
               {get(project, "sections").map(section => {
                 switch (section.type) {
                   case "content":
-                    return <ContentSection content={get(section, "content")} />;
+                    return (
+                      <ContentSection
+                        content={get(section, "content")}
+                        theme={get(section, "theme")}
+                      />
+                    );
                   case "content-title":
                     return (
                       <ContentTitleSection
                         title={get(section, "title")}
                         content={get(section, "content")}
+                        theme={get(section, "theme")}
                       />
                     );
                   case "image":
                     return <ImageSection image={get(section, "image")} />;
                   case "slider":
                     return (
-                      <div
-                        className="with-cursor"
-                        onMouseEnter={() => this.setCursor(true, "Drag")}
-                        onMouseLeave={() => this.setCursor(false, "")}
-                      >
-                        <ImagesSlider images={get(section, "images")} />
+                      <div className="with-cursor">
+                        <ImagesSlider
+                          images={get(section, "images")}
+                          isFullPage={get(section, "isFullPage", false)}
+                          setCursor={this.setCursor}
+                        />
                       </div>
                     );
                   case "paralax":
@@ -159,6 +181,12 @@ export default class CaseContent extends React.Component {
                     break;
                 }
               })}
+              <NextProject
+                index={this.nextProjectIndex + 1}
+                name={get(this.nextProject, "name")}
+                slug={get(this.nextProject, "slug")}
+                setCursor={this.setCursor}
+              />
             </div>
             {/* </ScrollWrapper> */}
           </div>

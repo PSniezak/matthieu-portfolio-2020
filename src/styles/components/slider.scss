@@ -1,0 +1,44 @@
+.sliderWrapper {
+  position: relative;
+}
+
+.slider {
+  position: absolute;
+  transform-origin: center;
+  transform: translateY(50%) translateX(-30%) rotate(35deg);
+  height: 100%;
+  width: 100%;
+
+  @include only-phone {
+    transform: rotate(32deg);
+  }
+
+  ul {
+    width: fit-content;
+    display: flex;
+    list-style-type: none;
+    margin-left: -350px;
+
+    &:first-of-type {
+      margin-bottom: 30px;
+
+      @include only-phone {
+        margin-bottom: 15px;
+      }
+    }
+
+    li {
+      opacity: 0.3;
+      height: 200px;
+      width: 400px;
+      margin-left: 30px;
+      border: 1px solid $c-white;
+
+      @include only-phone {
+        margin-left: 15px;
+        height: 134px;
+        width: 292px;
+      }
+    }
+  }
+}

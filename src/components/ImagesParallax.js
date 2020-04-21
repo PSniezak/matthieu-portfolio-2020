@@ -7,7 +7,7 @@ const ImagesParallax = ({ images, title }) => {
 
   const scrollRef = useRef();
 
-  const speed = [1, 4, 1, 4, 1, 3];
+  const speed = [1, 10, 1, 3, 2, 1];
 
   return (
     <div className="imagesParallaxWrapper section">

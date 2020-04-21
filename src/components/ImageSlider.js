@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ImagesSlider = ({ images }) => {
+const ImagesSlider = ({ images, setCursor, isFullPage }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -19,9 +19,17 @@ const ImagesSlider = ({ images }) => {
   //   Todo: cropping ?
 
   return (
-    <div className="imagesSliderWrapper section">
-      <div className="wrapper  ">
-        <div className="imagesSlider">
+    <div
+      className={`imagesSliderWrapper section ${
+        isFullPage ? "imagesSliderWrapper--fullPage" : ""
+      }`}
+    >
+      <div className={`${isFullPage ? "" : "wrapper"}`}>
+        <div
+          className="imagesSlider"
+          onMouseEnter={() => setCursor(true, "Drag")}
+          onMouseLeave={() => setCursor(false, "")}
+        >
           <Slider {...settings}>
             {images.map((image, index) => {
               return (
