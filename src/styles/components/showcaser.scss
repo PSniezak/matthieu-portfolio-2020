@@ -22,6 +22,9 @@
           h2 {
             &:after {
               opacity: 1;
+              -webkit-transition: opacity 0.85s ease;
+              transition: opacity 0.85s ease;
+              transition-delay: 300ms;
             }
           }
         }
@@ -94,6 +97,7 @@
 
         > div {
           // row
+          transform: translateZ(0);
           width: fit-content;
           display: flex;
           list-style-type: none;
@@ -108,7 +112,7 @@
           }
 
           &:nth-child(2n) {
-            margin-left: -701px;
+            margin-left: -820px;
           }
 
           div {
@@ -135,6 +139,7 @@
   }
 
   &__nav {
+    user-select: none;
     height: calc((100vh - #{$showcaserHeight}) / 2);
     display: flex;
     align-items: center;

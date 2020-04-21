@@ -94,11 +94,12 @@ export default class About extends React.Component {
         delay
       })
       .add({
-        targets: [slider.current, content.current],
+        targets: [slider.current, content.current.children],
         opacity: [0, 1],
+        // translateY: [80, 0],
         easing: easing,
         duration: transitionDuration,
-        delay
+        delay: anime.stagger(200)
       });
   }
 
