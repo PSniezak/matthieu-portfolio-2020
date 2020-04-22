@@ -2,6 +2,13 @@
   font-family: "MonumentExtended";
   font-size: 110px;
   text-transform: uppercase;
+
+  @include only-tablet {
+    font-size: 70px;
+  }
+  @include only-phone {
+    font-size: 40px;
+  }
 }
 
 .title {
@@ -11,13 +18,38 @@
 
 .title--small {
   font-size: 42px;
+
+  @include only-tablet {
+    font-size: 35px;
+  }
+  @include only-phone {
+    font-size: 30px;
+  }
 }
 
 .title--medium {
   font-size: 82px;
   line-height: 102px;
+
+  @include only-tablet {
+    font-size: 50px;
+    line-height: initial;
+  }
+  @include only-phone {
+    font-size: 35px;
+    line-height: initial;
+  }
 }
 
 .title--large {
   font-size: 100px;
+
+  @include only-tablet {
+    font-size: 60px;
+    line-height: initial;
+  }
+  @include only-phone {
+    font-size: 50px;
+    line-height: initial;
+  }
 }

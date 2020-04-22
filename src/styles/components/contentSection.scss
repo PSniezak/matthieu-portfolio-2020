@@ -5,6 +5,17 @@
     padding-bottom: 450px;
     margin-bottom: -400px;
     overflow: hidden;
+
+    @include only-tablet {
+      padding-top: 0px;
+      padding-bottom: 100px;
+      margin-bottom: -200px;
+    }
+    @include only-phone {
+      padding-top: 0px;
+      padding-bottom: 100px;
+      margin-bottom: -200px;
+    }
   }
 
   .contentSection__slider {

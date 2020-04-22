@@ -20,12 +20,38 @@
   height: 80vh;
   flex-direction: column;
 
+  @include only-tablet {
+    height: auto;
+    margin-top: $sectionPadding * 4;
+    margin-bottom: $sectionPadding * 2;
+  }
+  @include only-phone {
+    height: auto;
+    margin-top: $sectionPadding * 4;
+    margin-bottom: $sectionPadding * 2;
+  }
+
   .case__headerTags {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 80%;
-    max-width: 300px;
     margin-top: 20px;
+
     font-family: "MonumentExtended";
+
+    .tag {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    @include only-tablet {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    @include only-phone {
+      font-size: 10px;
+
+      margin-top: 10px;
+    }
   }
 }

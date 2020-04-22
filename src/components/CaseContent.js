@@ -14,6 +14,7 @@ import ImageSection from "./ImageSection";
 import ImagesParallax from "./ImagesParallax";
 import NextProject from "./NextProject";
 import Cursor from "./Cursor";
+import { isMobile } from "utils/is-mobile";
 
 export default class CaseContent extends React.Component {
   static contextType = AppContext;
@@ -49,6 +50,7 @@ export default class CaseContent extends React.Component {
     if (this.scroll.current) {
       setTimeout(() => {
         // quick fix / withtout this height is fuckup maybe cause image not loaded?
+
         this.scrollLoco = new locomotiveScroll({
           el: this.scroll.current,
           smooth: true

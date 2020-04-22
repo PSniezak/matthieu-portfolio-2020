@@ -10,11 +10,29 @@
 .text--medium {
   font-size: 30px;
   line-height: 40px;
+
+  @include only-tablet {
+    font-size: 25px;
+    line-height: initial;
+  }
+  @include only-phone {
+    font-size: 20px;
+    line-height: initial;
+  }
 }
 
 .text--large {
   font-size: 30px;
   line-height: 40px;
+
+  @include only-tablet {
+    font-size: 25px;
+    line-height: initial;
+  }
+  @include only-phone {
+    font-size: 20px;
+    line-height: initial;
+  }
 }
 
 .uppercase {
@@ -33,4 +51,11 @@
   min-height: 2px;
   background: white;
   margin-bottom: 60px;
+
+  @include only-tablet {
+    margin-bottom: 40px;
+  }
+  @include only-phone {
+    margin-bottom: 40px;
+  }
 }

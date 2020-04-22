@@ -1,11 +1,22 @@
 .contentTitle {
-  padding-top: 3 * $sectionPadding;
-  padding-bottom: $sectionPadding;
+  margin-top: 3 * $sectionPadding;
+  margin-bottom: $sectionPadding;
+
+  @include only-tablet {
+    margin-top: $sectionPadding;
+  }
+  @include only-phone {
+    margin-top: $sectionPadding;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
 
   &.contentTitle--small,
   &.contentTitle--light {
-    padding-top: $sectionPadding;
-    padding-bottom: $sectionPadding;
+    margin-top: $sectionPadding;
+    margin-bottom: $sectionPadding;
 
     .contentTitle__title {
       .title--small {
@@ -21,8 +32,16 @@
   }
 
   .flex {
+    flex-wrap: wrap;
     > div {
       flex: 0 0 50%;
+
+      @include only-tablet {
+        flex: 0 0 100%;
+      }
+      @include only-phone {
+        flex: 0 0 100%;
+      }
     }
   }
 }

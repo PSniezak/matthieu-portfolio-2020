@@ -39,6 +39,7 @@ $imageHeight: 350px;
     img {
       height: $imageHeight;
       width: auto;
+
       // position: absolute;
     }
 
@@ -78,6 +79,10 @@ $imageHeight: 350px;
       img {
         margin-right: $space-4;
         z-index: 0;
+
+        @include only-phone {
+          margin-right: $space-2;
+        }
       }
     }
 
@@ -86,6 +91,10 @@ $imageHeight: 350px;
       img {
         margin-left: $space-5;
         z-index: 2;
+
+        @include only-phone {
+          margin-left: $space-2;
+        }
       }
     }
 
