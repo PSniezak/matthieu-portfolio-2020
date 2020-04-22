@@ -28,15 +28,13 @@ export default class Works extends React.Component {
     const { previous } = this.context.location;
     const { state } = this.props;
 
-    console.log(previous);
-
     if (previous) {
       if (state === "exiting") {
         this.animateOut();
       }
 
       if (state === "entering") {
-        this.animateIn(previous && previous === "about" ? 1000 : 400);
+        this.animateIn(400);
       }
     } else {
       if (state === "entered") {
@@ -70,7 +68,7 @@ export default class Works extends React.Component {
     let duration = transitionDuration;
 
     timeline({}).add({
-      targets: this.ref.current,
+      targets: this.ref.current.children,
       opacity: [1, 0],
       easing: "easeInOutQuart",
       duration: duration

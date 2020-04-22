@@ -25,7 +25,6 @@ export default class Holder extends Component {
     this._timer = null;
   }
 
-  /*Start callback*/
   start(e) {
     let ended = this.state.ended;
     let start = Date.now();
@@ -40,11 +39,7 @@ export default class Holder extends Component {
     });
     let rightNumber = this.props.time && this.props.time > 0;
     let time = rightNumber ? this.props.time : 2;
-    if (!rightNumber) {
-      console.warn(
-        "You have specified an unvalid time prop for Holder. You need to specify a number > 0. Default time is 2."
-      );
-    }
+
     if (ended) {
       this._timer = setInterval(
         function() {
@@ -59,17 +54,16 @@ export default class Holder extends Component {
     document.documentElement.addEventListener("mouseup", this.end);
   }
 
-  /*End callback*/
   end(e) {
     document.documentElement.removeEventListener("mouseup", this.end);
     if (this.state.ended || this._unmounted) {
       return false;
     }
-    let endTime = Date.now(); //End time
-    let minDiff = this.props.time * 1000; // In seconds
-    let startTime = this.state.start; // Start time
-    let diff = endTime - startTime; // Time difference
-    let isEnough = diff >= minDiff; // It has been held for enough time
+    let endTime = Date.now();
+    let minDiff = this.props.time * 1000;
+    let startTime = this.state.start;
+    let diff = endTime - startTime;
+    let isEnough = diff >= minDiff;
 
     this.setState({
       holding: false,
@@ -86,7 +80,6 @@ export default class Holder extends Component {
     if (this.state.isEnough) e.stopPropagation();
   }
 
-  /*Interval callback*/
   interval(start) {
     if (!this.state.ended && start === this.state.start) {
       if (this.props.onHolder) {
