@@ -36,7 +36,7 @@
     height: 100%;
     position: fixed;
     background-color: $c-black;
-    z-index: 10;
+    z-index: 2;
     pointer-events: none;
     backface-visibility: hidden;
 
@@ -68,6 +68,10 @@
   &__infos {
     margin-left: calc(100% / 2);
     max-width: calc(#{$mainWidth} / 2);
+
+    @include customMediaQuery($mainWidth) {
+      max-width: calc(85% / 2);
+    }
 
     @include only-phone {
       margin-left: 33%;

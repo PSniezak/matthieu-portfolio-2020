@@ -93,13 +93,27 @@ export default class About extends React.Component {
         duration: transitionDuration,
         delay
       })
-      .add({
-        targets: [slider.current, content.current],
-        opacity: [0, 1],
-        easing: easing,
-        duration: transitionDuration,
-        delay
-      });
+      .add(
+        {
+          targets: content.current.children,
+          opacity: [0, 1],
+          translateY: [80, 0],
+          easing: easing,
+          duration: transitionDuration,
+          delay: anime.stagger(100, { start: 200 })
+        },
+        200
+      )
+      .add(
+        {
+          targets: slider.current,
+          opacity: [0, 1],
+          easing: easing,
+          duration: transitionDuration,
+          delay: 200
+        },
+        100
+      );
   }
 
   animateOut() {

@@ -22,6 +22,7 @@ export default class Showcaser extends React.Component {
   timeToHold = 2500;
   holdTimeline = null;
   rowTimeline = null;
+  renderingDefault = false;
 
   constructor(props) {
     super(props);
@@ -34,6 +35,9 @@ export default class Showcaser extends React.Component {
     this.backgroundVideo = React.createRef();
     this.hold = React.createRef();
     this.holdCircle = React.createRef();
+
+    this.forwards = [React.createRef(), React.createRef()];
+    this.backwards = [React.createRef(), React.createRef()];
 
     this.state = {
       current: 0
@@ -55,11 +59,12 @@ export default class Showcaser extends React.Component {
 
     if (previous) {
       if (state === "exiting") {
+        console.log("home content");
         this.animateOut();
       }
 
       if (state === "entering") {
-        this.animateIn(previous && previous === "about" ? 1000 : 400);
+        this.animateIn(400);
       }
     } else {
       if (state === "entered") {
@@ -97,12 +102,14 @@ export default class Showcaser extends React.Component {
     const { transitionDuration } = this.context;
     if (this.status === "exiting") return;
 
+    console.log("exit home");
+
     this.status = "exiting";
 
     let duration = transitionDuration;
 
     timeline({}).add({
-      targets: this.ref.current,
+      targets: this.ref.current.children,
       opacity: [1, 0],
       easing: "easeInOutQuart",
       duration: duration
@@ -110,81 +117,89 @@ export default class Showcaser extends React.Component {
   }
 
   startHold = (e, loop = false) => {
-    console.log("START");
-    console.log(loop);
+    // console.log("START");
+    // console.log(loop);
 
-    if (!loop) {
-      this.animateRows();
+    if (this.renderingDefault) {
+      // console.log("truing return");
+      return;
     }
 
-    this.holdTimeline = anime
-      .timeline({})
-      // Hold Button
-      .add(
-        {
-          targets: this.hold.current,
-          scale: 0.85,
-          duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
-        },
-        0
-      )
-      .add(
-        {
-          targets: this.holdCircle.current,
-          strokeDashoffset: [anime.setDashoffset, 0],
-          duration: this.timeToHold,
-          easing: "easeOutCubic"
-        },
-        0
-      )
-      // Background Video
-      .add(
-        {
-          targets: this.backgroundVideo.current,
-          opacity: 0,
-          duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
-        },
-        0
-      )
-      // Slideshow
-      .add(
-        {
-          targets: document.querySelectorAll(".row"),
-          opacity: 1,
-          // scale: [1.1, 1],
-          duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
-        },
-        0
-      )
-      // Titles around
-      .add(
-        {
-          targets: [
-            document.querySelectorAll(".slick-slide:not(.slick-current) a")
-          ],
-          opacity: 1,
-          scale: 0.9,
-          duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
-        },
-        0
-      )
-      // Main Title
-      .add(
-        {
-          targets: [document.querySelectorAll(".slick-slide.slick-current a")],
-          scale: 0.9,
-          duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
-        },
-        0
-      );
+    if (this.holdTimeline && !this.holdTimeline.completed && !loop) {
+      // console.log("try to replay");
+      this.animateRows(false);
+      this.holdTimeline.reverse();
+      this.holdTimeline.play();
+    } else {
+      if (!loop) {
+        this.animateRows(false);
+      } else {
+        this.animateRows(true);
+      }
+
+      this.holdTimeline = anime
+        .timeline({})
+        // Hold Button
+        .add(
+          {
+            targets: this.hold.current,
+            scale: loop ? 0.85 : [1, 0.85],
+            duration: this.timeToHold / 3,
+            easing: "easeOutCubic"
+          },
+          0
+        )
+        .add(
+          {
+            targets: this.holdCircle.current,
+            strokeDashoffset: [anime.setDashoffset, 0],
+            // strokeDasharray: loop ? [anime.setDashoffset, 0] : 0,
+            duration: this.timeToHold,
+            easing: "easeOutCubic"
+          },
+          0
+        )
+        // Background Video
+        .add(
+          {
+            targets: this.backgroundVideo.current,
+            opacity: loop ? 0 : [1, 0],
+            duration: this.timeToHold / 3,
+            easing: "easeOutCubic"
+          },
+          0
+        )
+        // Titles around
+        .add(
+          {
+            targets: [
+              document.querySelectorAll(".slick-slide:not(.slick-current) a")
+            ],
+            opacity: loop ? 1 : [0, 1],
+            scale: loop ? 0.9 : [1, 0.9],
+            duration: this.timeToHold / 3,
+            easing: "easeOutCubic"
+          },
+          0
+        )
+        // Main Title
+        .add(
+          {
+            targets: [
+              document.querySelectorAll(".slick-slide.slick-current a")
+            ],
+            scale: loop ? 0.9 : [1, 0.9],
+            duration: this.timeToHold / 3,
+            easing: "easeOutCubic"
+          },
+          0
+        );
+    }
   };
 
   renderDefaultPosition = () => {
+    this.renderingDefault = true;
+
     anime
       // Hold Button
       .timeline({})
@@ -245,7 +260,10 @@ export default class Showcaser extends React.Component {
           targets: [document.querySelectorAll(".slick-slide.slick-current a")],
           scale: [0.9, 1],
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: "easeOutCubic",
+          complete: () => {
+            this.renderingDefault = false;
+          }
         },
         0
       );
@@ -261,7 +279,7 @@ export default class Showcaser extends React.Component {
       targets: document.querySelectorAll(`.row img[data-index='${previous}']`),
       opacity: 0,
       easing: "easeOutCubic",
-      duration: this.timeToHold / 2
+      duration: this.timeToHold / 4
     });
 
     anime({
@@ -270,101 +288,116 @@ export default class Showcaser extends React.Component {
       ),
       opacity: 1,
       easing: "easeOutCubic",
-      duration: this.timeToHold / 2
+      duration: this.timeToHold / 4
     });
   };
 
-  animateRows = () => {
-    // anime({
-    //   targets: document.querySelectorAll(`.row:nth-child(1n)`),
-    //   easing: "linear",
-    //   duration: this.timeToHold / 4,
-    //   translateX: [`150px`, 0],
-    //   scale: [1.1, 1],
-    //   complete: () => {
-    //     anime({
-    //       targets: document.querySelectorAll(`.row:nth-child(1n)`),
-    //       translateX: [0, `-731px`],
-    //       loop: true,
-    //       duration: this.timeToHold * 2,
-    //       easing: "linear"
-    //     });
-    //   }
-    // });
-
-    // anime({
-    //   targets: document.querySelectorAll(`.row:nth-child(2n)`),
-    //   easing: "linear",
-    //   duration: this.timeToHold / 4,
-    //   translateX: [`-150px`, 0],
-    //   scale: [1.1, 1],
-    //   complete: () => {
-    //     anime({
-    //       targets: document.querySelectorAll(`.row:nth-child(2n)`),
-    //       translateX: [0, `731px`],
-    //       loop: true,
-    //       duration: this.timeToHold * 2,
-    //       easing: "linear"
-    //     });
-    //   }
-    // });
-
-    // anime({
-    //   targets: document.querySelectorAll(`.row:nth-child(1n)`),
-    //   easing: "linear",
-    //   scale: {
-    //     value: [1.1, 1],
-    //     duration: this.timeToHold / 4
-    //   },
-    //   translateX: {
-    //     value: [0, `-731px`],
-    //     loop: true,
-    //     duration: this.timeToHold * 2
-    //   }
-    // });
-
-    // anime({
-    //   targets: document.querySelectorAll(`.row:nth-child(2n)`),
-    //   easing: "linear",
-    //   scale: {
-    //     value: [1.1, 1],
-    //     duration: this.timeToHold / 4
-    //   },
-    //   translateX: {
-    //     value: [0, `731px`],
-    //     loop: true,
-    //     duration: this.timeToHold * 2
-    //   }
-    // });
-
-    anime({
-      targets: document.querySelectorAll(`.row:nth-child(1n)`),
-      translateX: [0, `-731px`],
-      loop: true,
-      duration: this.timeToHold * 2,
-      easing: "linear"
-    });
-    anime({
-      targets: document.querySelectorAll(`.row:nth-child(2n)`),
-      translateX: [0, `731px`],
-      loop: true,
-      duration: this.timeToHold * 2,
-      easing: "linear"
-    });
+  animateRows = (loop = false) => {
+    if (loop) {
+      this.rowTimeline.finished.then(() => {
+        // console.log("finished");
+        anime({
+          targets: document.querySelectorAll(`.row:nth-child(1n)`),
+          translateX: [0, `-731px`],
+          duration: this.timeToHold * 2,
+          loop: true,
+          easing: "linear"
+        });
+        anime({
+          targets: document.querySelectorAll(`.row:nth-child(2n)`),
+          translateX: [0, `731px`],
+          duration: this.timeToHold * 2,
+          loop: true,
+          easing: "linear"
+        });
+      });
+    } else {
+      if (this.rowTimeline && !this.rowTimeline.completed) {
+        this.rowTimeline.reverse();
+        this.rowTimeline.play();
+      } else {
+        this.rowTimeline = anime
+          .timeline({
+            // loop: true
+          })
+          .add(
+            {
+              targets: document.querySelectorAll(`.row[data-index='1']`),
+              easing: "linear",
+              opacity: {
+                value: [0, 1],
+                duration: this.timeToHold / 4,
+                easing: "easeInQuad"
+              },
+              scale: {
+                value: [1.06, 1],
+                duration: this.timeToHold / 4,
+                easing: "easeInQuad"
+              },
+              translateX: [
+                {
+                  value: ["50px", "-150px"],
+                  duration: this.timeToHold / 4,
+                  easing: "easeInQuad"
+                },
+                {
+                  value: ["-150px", `-731px`],
+                  duration: this.timeToHold * 2 - this.timeToHold / 4
+                }
+              ]
+            },
+            0
+          )
+          .add(
+            {
+              targets: document.querySelectorAll(`.row[data-index='2']`),
+              easing: "linear",
+              opacity: {
+                value: [0, 1],
+                duration: this.timeToHold / 4,
+                easing: "easeInQuad"
+              },
+              scale: {
+                value: [1.06, 1],
+                duration: this.timeToHold / 4,
+                easing: "easeInQuad"
+              },
+              translateX: [
+                {
+                  value: ["-50px", "150px"],
+                  duration: this.timeToHold / 4,
+                  easing: "easeInQuad"
+                },
+                {
+                  value: ["150px", `731px`],
+                  duration: this.timeToHold * 2 - this.timeToHold / 4
+                }
+              ]
+            },
+            0
+          );
+      }
+    }
   };
 
   endHold = (e, enough) => {
+    if (this.renderingDefault) {
+      // console.log("truing return");
+      return;
+    }
+
     if (enough) {
-      console.log("Released after enough time");
+      // console.log("Released after enough time");
       this.renderDefaultPosition();
     } else {
       this.holdTimeline.reverse();
-      console.log("Released too soon");
+      this.rowTimeline.reverse();
+      // console.log("Released too soon");
     }
   };
 
   onHolder = e => {
-    console.log("triggered");
+    // console.log("triggered");
     let current =
       this.state.current === data.projects.length - 1
         ? 0
@@ -391,12 +424,23 @@ export default class Showcaser extends React.Component {
       swipe: false,
       touchMove: false,
       useCSS: true,
-      useTransform: true
+      useTransform: true,
+      beforeChange: (prevSlide, nextSlide) => {
+        if (nextSlide === 0) {
+          document
+            .querySelectorAll(".slick-center + .slick-cloned")
+            .forEach(nextSlide => {
+              setTimeout(() =>
+                nextSlide.classList.add("slick-current", "slick-center")
+              );
+            });
+        }
+      }
     };
 
     const slideshows = (
       <div>
-        <div className={"row"}>
+        <div className={"row"} data-index="1">
           <div>
             {data.projects.map((project, i) => (
               <img key={i} data-index={i} src={project.slideshow[1]} alt="" />
@@ -415,7 +459,7 @@ export default class Showcaser extends React.Component {
             ))}
           </div>
         </div>
-        <div className={"row"}>
+        <div className={"row"} data-index="2">
           <div>
             {data.projects.map((project, i) => (
               <img key={i} data-index={i} src={project.slideshow[0]} alt="" />
@@ -434,7 +478,7 @@ export default class Showcaser extends React.Component {
             ))}
           </div>
         </div>
-        <div className={"row"}>
+        <div className={"row"} data-index="1">
           <div>
             {data.projects.map((project, i) => (
               <img key={i} data-index={i} src={project.slideshow[3]} alt="" />
@@ -453,7 +497,7 @@ export default class Showcaser extends React.Component {
             ))}
           </div>
         </div>
-        <div className={"row"}>
+        <div className={"row"} data-index="2">
           <div>
             {data.projects.map((project, i) => (
               <img key={i} data-index={i} src={project.slideshow[4]} alt="" />

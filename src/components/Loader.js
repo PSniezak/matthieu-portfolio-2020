@@ -1,14 +1,18 @@
 import React from "react";
 import anime from "animejs";
+import WebFont from "webfontloader";
 
 import { AppContext } from "context/app-context";
+
+import { isMobile } from "utils/is-mobile";
 
 import { data } from "data";
 
 export default class Loader extends React.Component {
   static contextType = AppContext;
 
-  loaded = 0;
+  mediaLoaded = 0;
+  fontsLoaded = false;
 
   constructor(props) {
     super(props);
@@ -17,27 +21,35 @@ export default class Loader extends React.Component {
     this.forward = React.createRef();
     this.backward = React.createRef();
 
-    console.log("-- Generating image list --");
     let images = [];
+    let videos = [];
 
-    data.projects.forEach(el => {
-      images.push(el.mainImage);
+    if (isMobile) {
+      console.log("-- Generating mobile image list --");
+      data.projects.forEach(el => {
+        images.push(el.mainImage);
+      });
+    } else {
+      console.log("-- Generating desktop image list --");
+      data.projects.forEach(el => {
+        images.push(el.mainImage);
 
-      images = images.concat(el.slideshow);
-    });
+        images = images.concat(el.slideshow);
+      });
 
-    console.log("-- Generating video list --");
-    let videos = data.projects.map(el => `${el.mainVideo}`);
+      console.log("-- Generating desktop video list --");
+      videos = data.projects.map(el => `${el.mainVideo}`);
+    }
 
     this.state = {
       images,
-      videos,
-      toLoad: videos.length + images.length
+      videos
     };
   }
 
   componentDidMount() {
-    this.animate(0);
+    this.loadFonts();
+    this.animate();
   }
 
   animate() {
@@ -99,11 +111,35 @@ export default class Loader extends React.Component {
     });
   }
 
-  loadingProgress = (src, index) => {
-    console.log(`${src} at position ${index} has been loaded`);
-    this.loaded += 1;
+  loadFonts = () => {
+    WebFont.load({
+      custom: {
+        families: ["Apercu:n4,n7", "Authenia:n4", "MonumentExtended:n4,n9"]
+      },
+      loading: () => {
+        console.log(`-- Loading custom webfonts`);
+      },
+      active: () => {
+        console.log("-- Webfonts loaded --");
+        this.fontsLoaded = true;
+        this.finishLoading();
+      }
+    });
+  };
 
-    if (this.loaded === this.state.toLoad) {
+  loadingProgress = (media, index) => {
+    console.log(`${media} at position ${index} has been loaded`);
+    this.mediaLoaded += 1;
+
+    this.finishLoading();
+  };
+
+  finishLoading = () => {
+    if (
+      this.mediaLoaded ===
+        this.state.images.length + this.state.videos.length &&
+      this.fontsLoaded === true
+    ) {
       console.log("-- Loading finished, proceeding --");
       this.animateOut();
     }
@@ -123,9 +159,10 @@ export default class Loader extends React.Component {
         key={index}
         src={video}
         type={"video/mp4"}
-        autoPlay
-        muted
-        onCanPlay={() => this.loadingProgress(video, index)}
+        muted={true}
+        autoPlay={true}
+        preload={"auto"}
+        onCanPlayThrough={() => this.loadingProgress(video, index)}
       ></video>
     ));
 
@@ -156,9 +193,6 @@ export default class Loader extends React.Component {
         <div style={{ display: "none" }}>
           {imageList}
           {videoList}
-          <p style={{ fontFamily: "MonumentExtended" }}>Monument</p>
-          <p style={{ fontFamily: "Authenia" }}>Authenia</p>
-          <p style={{ fontFamily: "Apercu" }}>Apercu</p>
         </div>
       </React.Fragment>
     );
