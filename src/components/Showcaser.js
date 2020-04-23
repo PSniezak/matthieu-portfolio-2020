@@ -59,11 +59,12 @@ export default class Showcaser extends React.Component {
 
     if (previous) {
       if (state === "exiting") {
+        console.log("home content");
         this.animateOut();
       }
 
       if (state === "entering") {
-        this.animateIn(previous && previous === "about" ? 1000 : 400);
+        this.animateIn(400);
       }
     } else {
       if (state === "entered") {
@@ -101,12 +102,14 @@ export default class Showcaser extends React.Component {
     const { transitionDuration } = this.context;
     if (this.status === "exiting") return;
 
+    console.log("exit home");
+
     this.status = "exiting";
 
     let duration = transitionDuration;
 
     timeline({}).add({
-      targets: this.ref.current,
+      targets: this.ref.current.children,
       opacity: [1, 0],
       easing: "easeInOutQuart",
       duration: duration

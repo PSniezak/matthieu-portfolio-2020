@@ -25,8 +25,8 @@ export default class App extends React.Component {
         speedY: 0,
         transitionDuration: 800,
         wheelActive: false,
-        loaderActive: true,
-        // loaderActive: false,
+        // loaderActive: true,
+        loaderActive: false,
         location: {
           current: "",
           previous: "",
@@ -81,13 +81,6 @@ export default class App extends React.Component {
 
     this.setState(({ appContext }) => {
       appContext.wheelActive = true;
-      return { appContext };
-    });
-  };
-
-  finishIntro = () => {
-    this.setState(({ appContext }) => {
-      appContext.loaderActive = false;
       return { appContext };
     });
   };
