@@ -104,7 +104,7 @@ export default class Loader extends React.Component {
       scale: [1, 1.1],
       duration: 800,
       easing: "easeOutQuart",
-      delay: 3000,
+      delay: 1500,
       complete: function(anim) {
         finishLoader();
       }

@@ -10,10 +10,8 @@ import Home from "components/Home";
 import Case from "components/Pages/Case";
 import Works from "components/Works";
 import About from "components/About";
-import { ParallaxProvider } from "react-scroll-parallax";
 
 import { isMobile } from "utils/is-mobile";
-import ReactCursorPosition from "react-cursor-position";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -25,8 +23,8 @@ export default class App extends React.Component {
         speedY: 0,
         transitionDuration: 800,
         wheelActive: false,
-        // loaderActive: true,
-        loaderActive: false,
+        loaderActive: true,
+        // loaderActive: false,
         location: {
           current: "",
           previous: "",
