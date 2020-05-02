@@ -12,7 +12,9 @@ const ImagesSlider = ({ images, setCursor, isFullPage }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     focusOnSelect: false,
-    arrows: false
+    arrows: false,
+    useTransform: true,
+    useCSS: true
   };
 
   //   Todo: cropping ?
