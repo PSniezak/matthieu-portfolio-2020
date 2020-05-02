@@ -3,11 +3,12 @@
   padding-top: 2.4 * $sectionPadding;
   padding-bottom: 2.4 * $sectionPadding;
   text-align: center;
+  text-decoration: none;
 
-  a {
-    text-decoration: none;
-    position: relative;
+  .mainTitle {
     display: inline-block;
+
+    position: relative;
   }
 
   .nextProject__number {

@@ -3,21 +3,26 @@ import { Link } from "@reach/router";
 
 const NextProject = ({ name, index, slug, setCursor }) => {
   return (
-    <div
+    <Link
+      to={`/case/${slug}`}
+      key={index}
+      style={{ display: "block" }}
       className="nextProject section with-cursor"
       onMouseEnter={() => setCursor(true, "Next", "black")}
       onMouseLeave={() => setCursor(false, "")}
     >
-      <div className="wrapper">
-        <Link to={`/case/${slug}`} key={index}>
-          <span className="nextProject__number">
-            {index < 10 && "0"}
-            {index}
-          </span>
-          <h2 className="mainTitle">{name}/</h2>
-        </Link>
+      <div>
+        <div className="wrapper">
+          <h2 className="mainTitle">
+            <span className="nextProject__number">
+              {index < 10 && "0"}
+              {index}
+            </span>
+            {name}/
+          </h2>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

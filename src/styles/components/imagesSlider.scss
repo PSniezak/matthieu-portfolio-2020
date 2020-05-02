@@ -46,6 +46,13 @@
           ($mainWidth + 2 * $minWrapperPadding) / 2
         )}
     );
+
+    @include only-tablet {
+      right: 10px;
+    }
+    @include only-phone {
+      right: 10px;
+    }
   }
 
   li {

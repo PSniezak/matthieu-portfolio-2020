@@ -10,7 +10,6 @@ const ImagesSlider = ({ images, setCursor, isFullPage }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    adaptiveHeight: true,
     slidesToScroll: 1,
     focusOnSelect: false,
     arrows: false
