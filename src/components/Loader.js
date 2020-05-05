@@ -38,7 +38,12 @@ export default class Loader extends React.Component {
       });
 
       console.log("-- Generating desktop video list --");
-      videos = data.projects.map(el => `${el.mainVideo}`);
+
+      data.projects.forEach(el => {
+        if (el.mainVideo) {
+          videos.push(el.mainVideo);
+        }
+      });
     }
 
     this.state = {

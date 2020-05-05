@@ -542,13 +542,17 @@ export default class Showcaser extends React.Component {
             className={`showcaser__slider__background`}
             ref={this.backgroundVideo}
           >
-            <video
-              src={data.projects[current].mainVideo}
-              type={"video/mp4"}
-              autoPlay
-              loop
-              muted
-            ></video>
+            {data.projects[current].mainVideo ? (
+              <video
+                src={data.projects[current].mainVideo}
+                type={"video/mp4"}
+                autoPlay
+                loop
+                muted
+              ></video>
+            ) : (
+              <img src={data.projects[current].mainImage} alt="" />
+            )}
           </div>
           <div className={`showcaser__slider__slideshow`}>{slideshows}</div>
         </div>

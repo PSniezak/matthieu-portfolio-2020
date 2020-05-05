@@ -137,7 +137,6 @@ export const data = {
       name: "Syfy",
       slug: "syfy",
       tags: ["short", "design", "CGI"],
-      mainVideo: require("images/eclipse_home.mp4"),
       mainImage: require("images/syfy_main.png"),
       slideshow: [
         require("images/eclipse_slideshow2.png"),
