@@ -25,6 +25,8 @@
 
       .slick-current {
         a {
+          pointer-events: all;
+          
           h2 {
             cursor: url("../../images/cursor_project.png") 64 64, pointer;
             &:after {
@@ -41,6 +43,7 @@
         display: block;
         margin: 0 100px;
         opacity: 0;
+        pointer-events: none;
 
         > * {
           display: inline-block;
