@@ -143,7 +143,7 @@ export default class Showcaser extends React.Component {
         .add(
           {
             targets: this.hold.current,
-            scale: loop ? 0.85 : [1, 0.85],
+            scale: loop ? 0.9 : [1, 0.9],
             duration: this.timeToHold / 3,
             easing: "easeOutCubic"
           },
@@ -520,69 +520,77 @@ export default class Showcaser extends React.Component {
     );
 
     return (
-      <div className={`showcaser`} ref={this.ref}>
-        <div className={`showcaser__slider`}>
-          <div className={`showcaser__slider__titles`}>
-            <Slider {...settings} ref={ref => (this.slider = ref)}>
-              {data.projects.map((project, i) => {
-                return (
-                  <Link
-                    to={`/case/${project.slug}`}
-                    key={i}
-                    ref={this.titles[i]}
-                  >
-                    <span>{`0${i + 1}`}</span>
-                    <h2 data-title={`${project.name}/`}>{project.name}/</h2>
-                  </Link>
-                );
-              })}
-            </Slider>
+      <Holder
+        time={this.timeToHold / 1000}
+        onStart={this.startHold}
+        onHolder={this.onHolder}
+        onEnd={this.endHold}
+      >
+        <div className={`showcaser`} ref={this.ref}>
+          <div className={`showcaser__slider`}>
+            <div className={`showcaser__slider__titles`}>
+              <Slider {...settings} ref={ref => (this.slider = ref)}>
+                {data.projects.map((project, i) => {
+                  return (
+                    <Link
+                      to={`/case/${project.slug}`}
+                      key={i}
+                      ref={this.titles[i]}
+                      onClick={e => e.stopPropagation()}
+                    >
+                      <span>{`0${i + 1}`}</span>
+                      <h2 data-title={`${project.name}/`}>{project.name}/</h2>
+                    </Link>
+                  );
+                })}
+              </Slider>
+            </div>
+            <div
+              className={`showcaser__slider__background`}
+              ref={this.backgroundVideo}
+            >
+              {data.projects[current].mainVideo ? (
+                <video
+                  src={data.projects[current].mainVideo}
+                  type={"video/mp4"}
+                  autoPlay
+                  loop
+                  muted
+                ></video>
+              ) : (
+                <img src={data.projects[current].mainImage} alt="" />
+              )}
+            </div>
+            <div className={`showcaser__slider__slideshow`}>{slideshows}</div>
           </div>
-          <div
-            className={`showcaser__slider__background`}
-            ref={this.backgroundVideo}
-          >
-            {data.projects[current].mainVideo ? (
-              <video
-                src={data.projects[current].mainVideo}
-                type={"video/mp4"}
-                autoPlay
-                loop
-                muted
-              ></video>
-            ) : (
-              <img src={data.projects[current].mainImage} alt="" />
-            )}
+          <div className={`showcaser__nav`}>
+            <div ref={this.hold}>
+              <span>
+                Hold <br /> to navigate
+              </span>
+              <svg height="108" width="108">
+                <circle
+                  cx="54"
+                  cy="54"
+                  r="52"
+                  strokeWidth="2"
+                  fillOpacity="0"
+                />
+              </svg>
+              <svg height="108" width="108">
+                <circle
+                  cx="54"
+                  cy="54"
+                  r="52"
+                  strokeWidth="2"
+                  fillOpacity="0"
+                  ref={this.holdCircle}
+                />
+              </svg>
+            </div>
           </div>
-          <div className={`showcaser__slider__slideshow`}>{slideshows}</div>
         </div>
-        <div className={`showcaser__nav`}>
-          <Holder
-            time={this.timeToHold / 1000}
-            onStart={this.startHold}
-            onHolder={this.onHolder}
-            onEnd={this.endHold}
-            setRef={this.hold}
-          >
-            <span>
-              Hold <br /> to navigate
-            </span>
-            <svg height="108" width="108">
-              <circle cx="54" cy="54" r="52" strokeWidth="2" fillOpacity="0" />
-            </svg>
-            <svg height="108" width="108">
-              <circle
-                cx="54"
-                cy="54"
-                r="52"
-                strokeWidth="2"
-                fillOpacity="0"
-                ref={this.holdCircle}
-              />
-            </svg>
-          </Holder>
-        </div>
-      </div>
+      </Holder>
     );
   }
 }

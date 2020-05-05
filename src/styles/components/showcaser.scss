@@ -7,6 +7,10 @@
   top: 0; right: 0; left: 0; bottom: 0;
   z-index: 50;
 
+  * {
+    pointer-events: none;
+  }
+
   &__slider {
     height: $showcaserHeight;
     max-width: $maxMainWidth;
@@ -26,6 +30,7 @@
       .slick-current {
         a {
           h2 {
+            pointer-events: all;
             cursor: url("../../images/cursor_project.png") 64 64, pointer;
             &:after {
               opacity: 1;
