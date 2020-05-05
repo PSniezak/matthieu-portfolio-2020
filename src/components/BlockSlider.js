@@ -18,7 +18,7 @@ const BlockSlider = ({ content, theme }) => {
       targets: forward.current,
       translateX: `-${blockTotal}px`,
       loop: true,
-      duration: 3000,
+      duration: 4000,
       easing: "linear",
       direction: "reverse"
     });
@@ -27,7 +27,7 @@ const BlockSlider = ({ content, theme }) => {
       targets: backward.current,
       translateX: `-${blockTotal}px`,
       loop: true,
-      duration: 3000,
+      duration: 4000,
       easing: "linear"
     });
   }, []);

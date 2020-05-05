@@ -92,6 +92,11 @@
       height: 100%;
       width: 100%;
       z-index: 1;
+
+      video {
+        width: 100%;
+        height: auto;
+      }
     }
 
     &__slideshow {
@@ -152,8 +157,8 @@
     justify-content: center;
 
     > div {
-      height: 120px;
-      width: 120px;
+      height: 108px;
+      width: 108px;
       color: $c-white;
       text-align: center;
       cursor: pointer;

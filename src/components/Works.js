@@ -14,12 +14,17 @@ export default class Works extends React.Component {
   static contextType = AppContext;
 
   status = null;
+  displayElements = 0;
 
   constructor(props) {
     super(props);
 
     this.ref = React.createRef();
     this.content = React.createRef();
+    this.title = React.createRef();
+    this.projects = data.projects.map(el => {
+      return React.createRef();
+    });
 
     this.state = {};
   }
@@ -41,6 +46,37 @@ export default class Works extends React.Component {
         this.animateIn(0);
       }
     }
+
+    for (let index = 0; index < this.projects.length; index++) {
+      if (state === "entering") return;
+
+      const element = this.projects[index];
+
+      if (this.displayElements < index + 1) {
+        let wh =
+          window.innerHeight ||
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+        let r = element.current.getBoundingClientRect();
+
+        let pr =
+          (1 - (r.top + r.height * (1 - 0)) / (wh + r.height * (1 - 0 * 2))) *
+            2 -
+          1;
+
+        if (pr > -0.7 && pr < 1) {
+          this.displayElements = this.displayElements + 1;
+
+          timeline({}).add({
+            targets: element.current,
+            opacity: [0, 1],
+            translateY: [80, 0],
+            easing: "easeOutQuart",
+            duration: 2000
+          });
+        }
+      }
+    }
   }
 
   animateIn(delay = 0) {
@@ -49,13 +85,13 @@ export default class Works extends React.Component {
     this.status = "entering";
 
     timeline({}).add({
-      targets: this.content.current.children,
+      targets: this.title.current,
       opacity: [0, 1],
       translateY: [80, 0],
       translateZ: 0,
       easing: "easeOutQuart",
       duration: 1000,
-      delay: anime.stagger(200, { start: delay })
+      delay
     });
   }
 
@@ -79,7 +115,12 @@ export default class Works extends React.Component {
     const { state } = this.props;
 
     let projects = data.projects.map((project, i) => (
-      <Link key={i} to={`/case/${project.slug}`} className={"works__project"}>
+      <Link
+        key={i}
+        to={`/case/${project.slug}`}
+        className={"works__project"}
+        ref={this.projects[i]}
+      >
         <img src={project.mainImage} alt="" />
         <div>
           <span>{`0${i + 1}`}</span>
@@ -92,7 +133,7 @@ export default class Works extends React.Component {
       <div className={`works`} ref={this.ref}>
         <ScrollWrapper state={state}>
           <div className={`works__content`} ref={this.content}>
-            <h2>Works/</h2>
+            <h2 ref={this.title}>Works/</h2>
             {projects}
           </div>
         </ScrollWrapper>

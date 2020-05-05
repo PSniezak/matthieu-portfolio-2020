@@ -78,8 +78,8 @@ export default class Showcaser extends React.Component {
       ".slick-slide[data-index='0'] a"
     )[0].style.opacity = 1;
 
-    this.holdCircle.current.style.strokeDasharray = Math.PI * 2 * 56;
-    this.holdCircle.current.style.strokeDashoffset = Math.PI * 2 * 56;
+    this.holdCircle.current.style.strokeDasharray = Math.PI * 2 * 52;
+    this.holdCircle.current.style.strokeDashoffset = Math.PI * 2 * 52;
   }
 
   animateIn(delay = 0) {
@@ -563,14 +563,14 @@ export default class Showcaser extends React.Component {
             <span>
               Hold <br /> to navigate
             </span>
-            <svg height="120" width="120">
-              <circle cx="60" cy="60" r="56" strokeWidth="2" fillOpacity="0" />
+            <svg height="108" width="108">
+              <circle cx="54" cy="54" r="52" strokeWidth="2" fillOpacity="0" />
             </svg>
-            <svg height="120" width="120">
+            <svg height="108" width="108">
               <circle
-                cx="60"
-                cy="60"
-                r="56"
+                cx="54"
+                cy="54"
+                r="52"
                 strokeWidth="2"
                 fillOpacity="0"
                 ref={this.holdCircle}
