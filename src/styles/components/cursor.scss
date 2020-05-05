@@ -1,6 +1,8 @@
+$animation: ease;
+
 .cursor {
-  width: 150px;
-  height: 150px;
+  width: 0px;
+  height: 0px;
   border-radius: 50%;
   position: absolute;
   pointer-events: none;
@@ -10,12 +12,13 @@
   align-items: center;
   justify-content: center;
   color: white;
-  left: -75px;
-  top: -75px;
   pointer-events: none;
   opacity: 0;
+  transition: $animation 0.4s width, $animation 0.4s opacity,
+    $animation 0.4s height, $animation 0.4s left, $animation 0.4s top;
+  left: -0px;
+  top: -0px;
   //   transition: opacity 0.4s ease;
-
   @include only-phone {
     display: none;
   }
@@ -33,6 +36,10 @@
 
 .cursor--visible {
   opacity: 1;
+  width: 150px;
+  height: 150px;
+  left: -75px;
+  top: -75px;
 }
 
 .with-cursor {
