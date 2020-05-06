@@ -53,9 +53,10 @@ export default class CaseContent extends React.Component {
 
         this.scrollLoco = new locomotiveScroll({
           el: this.scroll.current,
-          smooth: true
+          smooth: true,
+          inertia: 0.2
         });
-      }, 2000);
+      }, 1000);
     }
   }
 

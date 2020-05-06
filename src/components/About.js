@@ -60,7 +60,7 @@ export default class About extends React.Component {
       targets: forward.current,
       translateX: `-${blockTotal}px`,
       loop: true,
-      duration: 4000,
+      duration: 6000,
       easing: "linear",
       direction: "reverse"
     });
@@ -69,7 +69,7 @@ export default class About extends React.Component {
       targets: backward.current,
       translateX: `-${blockTotal}px`,
       loop: true,
-      duration: 4000,
+      duration: 6000,
       easing: "linear"
     });
   }
