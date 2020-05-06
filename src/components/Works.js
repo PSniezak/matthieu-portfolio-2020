@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "@reach/router";
-import anime from "animejs";
+import ReactCursorPosition from "react-cursor-position";
 
 import { AppContext } from "context/app-context";
 
 import ScrollWrapper from "components/ScrollWrapper";
+import Cursor from "./Cursor";
 
 import { timeline } from "utils/timeline";
 
@@ -26,7 +27,11 @@ export default class Works extends React.Component {
       return React.createRef();
     });
 
-    this.state = {};
+    this.state = {
+      cursorVisible: false,
+      cursorContent: "",
+      cursorColor: "red"
+    };
   }
 
   componentDidUpdate(prevProps) {
@@ -111,8 +116,17 @@ export default class Works extends React.Component {
     });
   }
 
+  setCursor = (visible, text, color = "red") => {
+    this.setState({
+      cursorVisible: visible,
+      cursorContent: text,
+      cursorColor: color
+    });
+  };
+
   render() {
     const { state } = this.props;
+    const { cursorContent, cursorVisible, cursorColor, position } = this.state;
 
     let projects = data.projects.map((project, i) => (
       <Link
@@ -120,6 +134,8 @@ export default class Works extends React.Component {
         to={`/case/${project.slug}`}
         className={"works__project"}
         ref={this.projects[i]}
+        onMouseEnter={() => this.setCursor(true, "See project")}
+        onMouseLeave={() => this.setCursor(false, "")}
       >
         <img src={project.mainImage} alt="" />
         <div>
@@ -130,14 +146,29 @@ export default class Works extends React.Component {
     ));
 
     return (
-      <div className={`works`} ref={this.ref}>
-        <ScrollWrapper state={state}>
-          <div className={`works__content`} ref={this.content}>
-            <h2 ref={this.title}>Works/</h2>
-            {projects}
-          </div>
-        </ScrollWrapper>
-      </div>
+      <ReactCursorPosition
+        onPositionChanged={props => {
+          let newProps = props;
+          let offset = !this.context.scrollY ? 0 : this.context.scrollY;
+          newProps.position.y = newProps.position.y - offset;
+          this.setState(newProps);
+        }}
+      >
+        <div className={`works`} ref={this.ref}>
+          <ScrollWrapper state={state}>
+            <div className={`works__content`} ref={this.content}>
+              <Cursor
+                {...position}
+                visible={cursorVisible}
+                text={cursorContent}
+                color={cursorColor}
+              />
+              <h2 ref={this.title}>Works/</h2>
+              {projects}
+            </div>
+          </ScrollWrapper>
+        </div>
+      </ReactCursorPosition>
     );
   }
 }

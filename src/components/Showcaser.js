@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import anime from "animejs";
+import ReactCursorPosition from "react-cursor-position";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { AppContext } from "context/app-context";
 
 import Holder from "components/Holder";
+import Cursor from "components/Cursor";
 
 import { timeline } from "utils/timeline";
 
@@ -40,7 +42,10 @@ export default class Showcaser extends React.Component {
     this.backwards = [React.createRef(), React.createRef()];
 
     this.state = {
-      current: 0
+      current: 0,
+      cursorVisible: false,
+      cursorContent: "",
+      cursorColor: "red"
     };
   }
 
@@ -408,8 +413,23 @@ export default class Showcaser extends React.Component {
     this.startHold(e, true);
   };
 
+  setCursor = (visible, text, color = "red") => {
+    this.setState({
+      cursorVisible: visible,
+      cursorContent: text,
+      cursorColor: color
+    });
+  };
+
   render() {
-    let { current } = this.state;
+    let {
+      current,
+      cursorContent,
+      cursorVisible,
+      cursorColor,
+      position
+    } = this.state;
+
     let settings = {
       dots: false,
       infinite: true,
@@ -526,70 +546,80 @@ export default class Showcaser extends React.Component {
         onHolder={this.onHolder}
         onEnd={this.endHold}
       >
-        <div className={`showcaser`} ref={this.ref}>
-          <div className={`showcaser__slider`}>
-            <div className={`showcaser__slider__titles`}>
-              <Slider {...settings} ref={ref => (this.slider = ref)}>
-                {data.projects.map((project, i) => {
-                  return (
-                    <Link
-                      to={`/case/${project.slug}`}
-                      key={i}
-                      ref={this.titles[i]}
-                      onClick={e => e.stopPropagation()}
-                    >
-                      <span>{`0${i + 1}`}</span>
-                      <h2 data-title={`${project.name}/`}>{project.name}/</h2>
-                    </Link>
-                  );
-                })}
-              </Slider>
+        <ReactCursorPosition onPositionChanged={props => this.setState(props)}>
+          <Cursor
+            {...position}
+            visible={cursorVisible}
+            text={cursorContent}
+            color={cursorColor}
+          />
+          <div className={`showcaser`} ref={this.ref}>
+            <div className={`showcaser__slider`}>
+              <div className={`showcaser__slider__titles`}>
+                <Slider {...settings} ref={ref => (this.slider = ref)}>
+                  {data.projects.map((project, i) => {
+                    return (
+                      <Link
+                        to={`/case/${project.slug}`}
+                        key={i}
+                        ref={this.titles[i]}
+                        onClick={e => e.stopPropagation()}
+                        onMouseEnter={() => this.setCursor(true, "See project")}
+                        onMouseLeave={() => this.setCursor(false, "")}
+                      >
+                        <span>{`0${i + 1}`}</span>
+                        <h2 data-title={`${project.name}/`}>{project.name}/</h2>
+                      </Link>
+                    );
+                  })}
+                </Slider>
+              </div>
+              <div
+                className={`showcaser__slider__background`}
+                ref={this.backgroundVideo}
+              >
+                {data.projects[current].mainVideo ? (
+                  <video
+                    src={data.projects[current].mainVideo}
+                    type={"video/mp4"}
+                    autoPlay
+                    loop
+                    muted
+                  ></video>
+                ) : (
+                  <img src={data.projects[current].mainImage} alt="" />
+                )}
+              </div>
+              <div className={`showcaser__slider__slideshow`}>{slideshows}</div>
             </div>
-            <div
-              className={`showcaser__slider__background`}
-              ref={this.backgroundVideo}
-            >
-              {data.projects[current].mainVideo ? (
-                <video
-                  src={data.projects[current].mainVideo}
-                  type={"video/mp4"}
-                  autoPlay
-                  loop
-                  muted
-                ></video>
-              ) : (
-                <img src={data.projects[current].mainImage} alt="" />
-              )}
+            <div className={`showcaser__nav`}>
+              <div ref={this.hold}>
+                <span>
+                  Hold <br /> to navigate
+                </span>
+                <svg height="108" width="108">
+                  <circle
+                    cx="54"
+                    cy="54"
+                    r="52"
+                    strokeWidth="2"
+                    fillOpacity="0"
+                  />
+                </svg>
+                <svg height="108" width="108">
+                  <circle
+                    cx="54"
+                    cy="54"
+                    r="52"
+                    strokeWidth="2"
+                    fillOpacity="0"
+                    ref={this.holdCircle}
+                  />
+                </svg>
+              </div>
             </div>
-            <div className={`showcaser__slider__slideshow`}>{slideshows}</div>
           </div>
-          <div className={`showcaser__nav`}>
-            <div ref={this.hold}>
-              <span>
-                Hold <br /> to navigate
-              </span>
-              <svg height="108" width="108">
-                <circle
-                  cx="54"
-                  cy="54"
-                  r="52"
-                  strokeWidth="2"
-                  fillOpacity="0"
-                />
-              </svg>
-              <svg height="108" width="108">
-                <circle
-                  cx="54"
-                  cy="54"
-                  r="52"
-                  strokeWidth="2"
-                  fillOpacity="0"
-                  ref={this.holdCircle}
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+        </ReactCursorPosition>
       </Holder>
     );
   }
