@@ -1,5 +1,6 @@
 import React from "react";
-import { Router, Location } from "@reach/router";
+import ReactGA from "react-ga";
+import { Router, Location, globalHistory } from "@reach/router";
 import { af as AF } from "@gladeye/af";
 
 import { AppContext } from "context/app-context";
@@ -12,6 +13,12 @@ import Works from "components/Works";
 import About from "components/About";
 
 import { isMobile } from "utils/is-mobile";
+
+ReactGA.initialize("UA-60828958-1");
+
+globalHistory.listen(({ location }) => {
+  ReactGA.pageview(location.pathname);
+});
 
 export default class App extends React.Component {
   constructor(props) {
