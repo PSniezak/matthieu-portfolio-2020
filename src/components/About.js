@@ -150,14 +150,7 @@ export default class About extends React.Component {
                 Motion designer <br /> 2D/3D based in Paris{" "}
               </h3>
 
-              <p>
-                Matthieu Tourdes, graduated from HETIC and after one year at 17
-                Mars I’m now art director motion as freelancer.
-                <br />
-                <br />
-                During my profesionnal experience, I had the privilege to work
-                for famous brands like Mc Donald’s, Bugatti, Citroën...
-              </p>
+              <div dangerouslySetInnerHTML={{ __html: data.about.content }} />
 
               <ul>
                 {data.global.socials.map((social, i) => (

@@ -19,7 +19,7 @@ export const data = {
     title: "About",
     job: ["Motion Designer", "2D/3D based in Paris "],
     content: [
-      "<p>Matthieu Tourdes is a freelance Designer and Concept Artist. His work spans multiple disciplines, from motion graphics, live visuals, and broadcast, to film and gaming. </p><p>Matthieu is available by contract in Paris and remotely. Contact matthieu.tourdes@gmail.com </p>"
+      "<p>Matthieu Tourdes is a freelance Designer and Concept Artist. His work spans multiple disciplines, from motion graphics, live visuals, and broadcast, to film and gaming. </p><br><br><p>Matthieu is available by contract in Paris and remotely, contact <a href='mailto:matthieu.tourdes@gmail.com' >matthieu.tourdes@gmail.com</a>.</p>"
     ]
   },
   projects: [

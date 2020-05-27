@@ -21,7 +21,7 @@ export default class Showcaser extends React.Component {
 
   status = null;
   tl = null;
-  timeToHold = 2500;
+  timeToHold = 1500;
   holdTimeline = null;
   rowTimeline = null;
   renderingDefault = false;
