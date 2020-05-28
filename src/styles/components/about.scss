@@ -5,9 +5,9 @@
   height: 100%;
   top: 0; right: 0; left: 0; bottom: 0;
 
-  @include only-phone {
-    height: 100vh;
-  }
+  // @include only-phone {
+  //   height: 100vh;
+  // }
 
   .is-mobile & {
     position: relative;

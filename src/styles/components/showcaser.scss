@@ -33,9 +33,9 @@
             pointer-events: all;
             &:after {
               opacity: 1;
-              -webkit-transition: opacity 0.65s ease;
-              transition: opacity 0.65s ease;
-              transition-delay: 300ms;
+              -webkit-transition: opacity 0.2s ease-in;
+              transition: opacity 0.2s ease-in;
+              // transition-delay: 1000ms;
             }
           }
         }
@@ -82,9 +82,11 @@
             height: 100%;
             color: $c-white;
             opacity: 0;
-            -webkit-transition: opacity 0.65s ease;
-            transition: opacity 0.65s ease;
+            -webkit-transition: opacity 0.5s ease-in;
+            transition: opacity 0.5s ease-in;
           }
+
+
         }
       }
     }

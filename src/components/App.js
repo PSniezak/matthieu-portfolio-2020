@@ -9,7 +9,7 @@ import TransitionRouter from "components/TransitionRouter";
 import Header from "components/Header";
 import Home from "components/Home";
 import Case from "components/Pages/Case";
-import Works from "components/Works";
+import Work from "components/Work";
 import About from "components/About";
 
 import { isMobile } from "utils/is-mobile";
@@ -150,7 +150,7 @@ export default class App extends React.Component {
                     />
 
                     {<Case path="case/:slug" state={state} />}
-                    {<Works path="/works" state={state} />}
+                    {<Work path="/work" state={state} />}
                     {<About path="/about" state={state} />}
                   </Router>
                 )}

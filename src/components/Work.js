@@ -11,7 +11,7 @@ import { timeline } from "utils/timeline";
 
 import { data } from "data";
 
-export default class Works extends React.Component {
+export default class Work extends React.Component {
   static contextType = AppContext;
 
   status = null;
@@ -163,7 +163,7 @@ export default class Works extends React.Component {
                 text={cursorContent}
                 color={cursorColor}
               />
-              <h2 ref={this.title}>Works/</h2>
+              <h2 ref={this.title}>Work/</h2>
               {projects}
             </div>
           </ScrollWrapper>

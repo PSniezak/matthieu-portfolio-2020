@@ -57,8 +57,8 @@ class Header extends React.Component {
           </Link>
           <div className={`header__links header__links--${theme}`}>
             {!isMobile ? (
-              <Link to="/works" getProps={this.isActive}>
-                Works
+              <Link to="/work" getProps={this.isActive}>
+                Work
                 <svg viewBox="0 0 205 120">
                   <g display="block">
                     <path

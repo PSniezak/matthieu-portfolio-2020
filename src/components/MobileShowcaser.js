@@ -97,6 +97,7 @@ export default class MobileShowcaser extends React.Component {
       arrows: false,
       centerPadding: "0px",
       useCSS: true,
+      touchThreshold: 8,
       useTransform: true,
       afterChange: index => {
         this.setState({ current: index });
