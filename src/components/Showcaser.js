@@ -21,7 +21,7 @@ export default class Showcaser extends React.Component {
 
   status = null;
   tl = null;
-  timeToHold = 1500;
+  timeToHold = 1600;
   holdTimeline = null;
   rowTimeline = null;
   renderingDefault = false;
@@ -166,7 +166,7 @@ export default class Showcaser extends React.Component {
           strokeDashoffset: [anime.setDashoffset, 0],
           // strokeDasharray: loop ? [anime.setDashoffset, 0] : 0,
           duration: this.timeToHold,
-          easing: "easeOutCubic"
+          easing: "easeInOutSine"
         },
         0
       )
@@ -227,7 +227,7 @@ export default class Showcaser extends React.Component {
           // opacity: 0,
           strokeDashoffset: anime.setDashoffset,
           duration: this.timeToHold,
-          easing: "easeOutCubic",
+          easing: "easeInOutSine",
           complete: () => {
             this.renderingDefault = false;
           }
@@ -455,6 +455,8 @@ export default class Showcaser extends React.Component {
       accessibility: false,
       arrows: false,
       centerPadding: "0px",
+      easing: "cubic-bezier(0.37, 0, 0.63, 1)",
+      cssEase: "cubic-bezier(0.37, 0, 0.63, 1)",
       draggable: false,
       swipe: false,
       touchMove: false,
