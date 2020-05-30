@@ -12,11 +12,13 @@ $space-5: calc(
 $imageHeight: 350px;
 
 .imagesParallaxWrapper {
+  // position: relative;
   .wrapper {
-    // position: relative;
-    margin-top: $imageHeight;
-    margin-bottom: -$imageHeight;
     position: relative;
+    // margin-top: $imageHeight;
+    // margin-bottom: -$imageHeight;
+    // position: absolute;
+    top: 200px;
     z-index: 20;
   }
 
@@ -26,7 +28,18 @@ $imageHeight: 350px;
   }
 }
 
+.imagesParallaxTitle {
+  // transform: translateY(-300px);
+  // margin-bottom: -200px;
+  // position: absolute;
+  // left: 50%;
+  // transform: translateX(-50%);
+  // width: 100%;
+}
+
 .imagesParallax {
+  margin-top: -300px;
+  margin-bottom: 300px;
   .imagesParallax__image {
     position: relative;
     // height: $imageHeight;

@@ -12,12 +12,12 @@ const ImagesParallax = ({ images, title }) => {
   return (
     <div className="imagesParallaxWrapper section">
       <div
-        className="wrapper"
+        className="wrapper imagesParallaxTitle"
         // data-scroll-target=".imagesParallaxWrapper"
         // data-scroll-sticky
-        data-scroll
-        data-scroll-speed={-3}
-        data-scroll-offset={"-1000, 0"}
+        // data-scroll
+        // data-scroll-speed={-3}
+        // data-scroll-offset={"-1000, 0"}
       >
         <h2 className="imagesParallaxWrapper__title title title--medium center">
           {title}
@@ -26,18 +26,28 @@ const ImagesParallax = ({ images, title }) => {
       <div className="imagesParallax">
         {images.map((image, index) => {
           return (
-            <div
-              key={`parallax_${index}`}
-              data-scroll
-              data-scroll-speed={speed[index]}
-              data-scroll-offset={"-1000, 0"}
+            <Parallax
               className="imagesParallax__image"
+              key={`parallax_${index}`}
+              min={((images.length - index) % 6) * 20}
+              max={((images.length - index) % 6) * 150}
             >
               <div>
-                {/* <span className="colored-white">{index}</span> */}
                 <img src={image} />
               </div>
-            </div>
+            </Parallax>
+            // <div
+            //   key={`parallax_${index}`}
+            //   data-scroll
+            //   data-scroll-speed={speed[index]}
+            //   data-scroll-offset={"-1000, 0"}
+            //   className="imagesParallax__image"
+            // >
+            //   <div>
+            //     {/* <span className="colored-white">{index}</span> */}
+            //     <img src={image} />
+            //   </div>
+            // </div>
           );
         })}
       </div>
