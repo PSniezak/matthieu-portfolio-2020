@@ -59,3 +59,16 @@
     margin-bottom: 40px;
   }
 }
+
+.textAnim {
+  transition: 0.2s ease-in-out all;
+  text-align: center;
+  display: block;
+}
+
+.text--visible {
+  opacity: 1;
+}
+.text--hidden {
+  opacity: 0;
+}

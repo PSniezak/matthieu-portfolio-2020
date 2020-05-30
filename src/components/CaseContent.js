@@ -203,6 +203,7 @@ export default class CaseContent extends React.Component {
                         return (
                           <ImagesParallax
                             title={get(section, "title")}
+                            title2={get(section, "title2")}
                             images={get(section, "images")}
                           />
                         );

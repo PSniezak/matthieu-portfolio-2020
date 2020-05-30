@@ -78,7 +78,8 @@ export const data = {
 
         {
           type: "paralax",
-          title: "A VOYAGE TO A DARK REALITY WHERE HUMANS NEED TO RECOVER.",
+          title: "A VOYAGE TO A DARK REALITY.",
+          title2: " WHERE HUMANS NEED TO RECOVER",
           images: [
             require("images/eclipse/parallax/eclipse_parallax05.jpg"),
             require("images/eclipse/parallax/eclipse_parallax06.jpg"),
