@@ -184,8 +184,14 @@ export const data = {
         {
           type: "content",
           theme: "red",
-          content:
+          image:
             "In 2018, 17MARS agency gave me the opportunity to design a jingle pub for the famous television channel SYFY. The theme was about magic and fantasy with a relation to differents SYFY series universe. Vimeo mdp: syfy"
+        },
+
+        {
+          type: "image",
+          image: require("images/syfy/final_frames/syfy_mainimage.jpg"),
+          hint: "vimeo mdp: syfy"
         },
 
         {

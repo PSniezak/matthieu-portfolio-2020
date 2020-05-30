@@ -28,7 +28,9 @@ const ImagesSlider = ({ images, setCursor, isFullPage }) => {
       <div className={`${isFullPage ? "" : "wrapper"}`}>
         <div
           className="imagesSlider"
-          onMouseEnter={() => setCursor(true, "Drag")}
+          onMouseEnter={() =>
+            images.length > 1 ? setCursor(true, "Drag") : null
+          }
           onMouseLeave={() => setCursor(false, "")}
         >
           <Slider {...settings}>
