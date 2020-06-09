@@ -22,15 +22,15 @@
 }
 
 .text--large {
-  font-size: 30px;
+  font-size: 26px;
   line-height: 40px;
 
   @include only-tablet {
-    font-size: 25px;
+    font-size: 22px;
     line-height: initial;
   }
   @include only-phone {
-    font-size: 20px;
+    font-size: 18px;
     line-height: initial;
   }
 }
@@ -48,7 +48,7 @@
 }
 
 .divider {
-  min-height: 2px;
+  min-height: 1px;
   background: white;
   margin-bottom: 60px;
 
@@ -58,4 +58,17 @@
   @include only-phone {
     margin-bottom: 40px;
   }
+}
+
+.textAnim {
+  transition: 0.2s ease-in-out all;
+  text-align: center;
+  display: block;
+}
+
+.text--visible {
+  opacity: 1;
+}
+.text--hidden {
+  opacity: 0;
 }

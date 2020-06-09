@@ -73,6 +73,8 @@ const VideoSection = ({ imgUrl, videoID, setCursor, ...props }) => {
           ref={image}
         />
 
+        <span className="cursor cursor--visible videoSection__play">Play</span>
+
         <div className={`videoSection__video `}>
           <Vimeo
             id="vimeo"

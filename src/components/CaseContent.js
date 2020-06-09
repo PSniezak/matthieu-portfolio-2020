@@ -50,12 +50,11 @@ export default class CaseContent extends React.Component {
     if (this.scroll.current) {
       setTimeout(() => {
         // quick fix / withtout this height is fuckup maybe cause image not loaded?
-
-        this.scrollLoco = new locomotiveScroll({
-          el: this.scroll.current,
-          smooth: true,
-          inertia: 0.2
-        });
+        // this.scrollLoco = new locomotiveScroll({
+        //   el: this.scroll.current,
+        //   smooth: true,
+        //   inertia: 0.2
+        // });
       }, 1000);
     }
   }
@@ -142,84 +141,99 @@ export default class CaseContent extends React.Component {
         <div className={`case`} ref={this.ref}>
           <div>
             <div ref={this.scroll}>
-              {/* <ScrollWrapper state={state}> */}
-              <div className={`case__content`} ref={this.content}>
-                {/* Header */}
-                <div className="case__header flex flex--center-middle wrapper">
-                  <h2 className="mainTitle">{get(project, "name")}/</h2>
-                  <div className="case__headerTags">
-                    {get(project, "tags", []).map(tag => {
-                      return (
-                        <span key={tag} className="tag colored--grey uppercase">
-                          {tag}
-                        </span>
-                      );
-                    })}
+              <ScrollWrapper state={state}>
+                <div className={`case__content`} ref={this.content}>
+                  {/* Header */}
+                  <div className="case__header flex flex--center-middle wrapper">
+                    <h2 className="mainTitle">{get(project, "name")}/</h2>
+                    <div className="case__headerTags">
+                      {get(project, "tags", []).map(tag => {
+                        return (
+                          <span
+                            key={tag}
+                            className="tag colored--grey uppercase"
+                          >
+                            {tag}
+                          </span>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-                {get(project, "sections").map(section => {
-                  switch (section.type) {
-                    case "content":
-                      return (
-                        <ContentSection
-                          content={get(section, "content")}
-                          theme={get(section, "theme")}
-                        />
-                      );
-                    case "content-title":
-                      return (
-                        <ContentTitleSection
-                          title={get(section, "title")}
-                          content={get(section, "content")}
-                          theme={get(section, "theme")}
-                        />
-                      );
-                    case "image":
-                      return <ImageSection image={get(section, "image")} />;
-                    case "slider":
-                      return (
-                        <div className="with-cursor">
-                          <ImagesSlider
+                  {get(project, "sections").map(section => {
+                    switch (section.type) {
+                      case "content":
+                        return (
+                          <ContentSection
+                            content={get(section, "content")}
+                            theme={get(section, "theme")}
+                          />
+                        );
+                      case "content-title":
+                        return (
+                          <ContentTitleSection
+                            title={get(section, "title")}
+                            content={get(section, "content")}
+                            theme={get(section, "theme")}
+                          />
+                        );
+                      case "image":
+                        return (
+                          <ImageSection
+                            image={get(section, "image")}
+                            hint={get(section, "hint")}
+                          />
+                        );
+                      case "slider":
+                        return (
+                          <div
+                            className={`${
+                              get(section, "images").length > 1
+                                ? "with-cursor"
+                                : ""
+                            }`}
+                          >
+                            <ImagesSlider
+                              images={get(section, "images")}
+                              isFullPage={get(section, "isFullPage", false)}
+                              setCursor={this.setCursor}
+                            />
+                          </div>
+                        );
+                      case "paralax":
+                        return (
+                          <ImagesParallax
+                            title={get(section, "title")}
+                            title2={get(section, "title2")}
                             images={get(section, "images")}
-                            isFullPage={get(section, "isFullPage", false)}
-                            setCursor={this.setCursor}
                           />
-                        </div>
-                      );
-                    case "paralax":
-                      return (
-                        <ImagesParallax
-                          title={get(section, "title")}
-                          images={get(section, "images")}
-                        />
-                      );
-                    case "video":
-                      return (
-                        <div
-                          className="with-cursor"
-                          onMouseEnter={() => this.setCursor(true, "Play")}
-                          onMouseLeave={() => this.setCursor(false, "")}
-                        >
-                          <VideoSection
-                            imgUrl={get(section, "image")}
-                            videoID={get(section, "video")}
-                            setCursor={this.setCursor}
-                          />
-                        </div>
-                      );
+                        );
+                      case "video":
+                        return (
+                          <div
+                            className="with-cursor"
+                            onMouseEnter={() => this.setCursor(true, "Play")}
+                            onMouseLeave={() => this.setCursor(false, "")}
+                          >
+                            <VideoSection
+                              imgUrl={get(section, "image")}
+                              videoID={get(section, "video")}
+                              setCursor={this.setCursor}
+                            />
+                          </div>
+                        );
 
-                    default:
-                      break;
-                  }
-                })}
-                <NextProject
-                  index={this.nextProjectIndex + 1}
-                  name={get(this.nextProject, "name")}
-                  slug={get(this.nextProject, "slug")}
-                  setCursor={this.setCursor}
-                />
-              </div>
-              {/* </ScrollWrapper> */}
+                      default:
+                        break;
+                    }
+                  })}
+                  <NextProject
+                    index={this.nextProjectIndex + 1}
+                    name={get(this.nextProject, "name")}
+                    slug={get(this.nextProject, "slug")}
+                    setCursor={this.setCursor}
+                  />
+                </div>
+              </ScrollWrapper>
             </div>
           </div>
         </div>

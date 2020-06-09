@@ -78,7 +78,8 @@ export const data = {
 
         {
           type: "paralax",
-          title: "A VOYAGE TO A DARK REALITY WHERE HUMANS NEED TO RECOVER.",
+          title: "A VOYAGE TO A DARK REALITY.",
+          title2: " WHERE HUMANS NEED TO RECOVER",
           images: [
             require("images/eclipse/parallax/eclipse_parallax05.jpg"),
             require("images/eclipse/parallax/eclipse_parallax06.jpg"),
@@ -184,8 +185,14 @@ export const data = {
         {
           type: "content",
           theme: "red",
-          content:
+          image:
             "In 2018, 17MARS agency gave me the opportunity to design a jingle pub for the famous television channel SYFY. The theme was about magic and fantasy with a relation to differents SYFY series universe. Vimeo mdp: syfy"
+        },
+
+        {
+          type: "image",
+          image: require("images/syfy/final_frames/syfy_mainimage.jpg"),
+          hint: "vimeo mdp: syfy"
         },
 
         {

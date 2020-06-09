@@ -12,21 +12,39 @@ $space-5: calc(
 $imageHeight: 350px;
 
 .imagesParallaxWrapper {
+  // position: relative;
   .wrapper {
-    // position: relative;
-    margin-top: $imageHeight;
-    margin-bottom: -$imageHeight;
     position: relative;
+    // margin-top: $imageHeight;
+    // margin-bottom: -$imageHeight;
+    // position: absolute;
+    top: 200px;
     z-index: 20;
   }
 
   .imagesParallaxWrapper__title {
     width: 100%;
     margin-top: 120px;
+
+    span:nth-child(2) {
+      position: absolute;
+      top: 0;
+    }
   }
 }
 
+.imagesParallaxTitle {
+  // transform: translateY(-300px);
+  // margin-bottom: -200px;
+  // position: absolute;
+  // left: 50%;
+  // transform: translateX(-50%);
+  // width: 100%;
+}
+
 .imagesParallax {
+  margin-top: -300px;
+  margin-bottom: 300px;
   .imagesParallax__image {
     position: relative;
     // height: $imageHeight;
@@ -44,7 +62,7 @@ $imageHeight: 350px;
     }
 
     &:nth-child(6n + 1) {
-      margin-bottom: -($imageHeight / 2);
+      // margin-bottom: -($imageHeight / 4);
       text-align: right;
       z-index: 2;
       img {
@@ -54,7 +72,7 @@ $imageHeight: 350px;
     }
 
     &:nth-child(6n + 2) {
-      margin-bottom: -($imageHeight / 2);
+      // margin-bottom: -($imageHeight / 4);
       text-align: right;
       z-index: 4;
 
@@ -65,7 +83,7 @@ $imageHeight: 350px;
     }
 
     &:nth-child(6n + 3) {
-      margin-bottom: -($imageHeight * 0.9);
+      // margin-bottom: -($imageHeight * 0.9);
       img {
         margin-left: $space-3;
         z-index: 1;
