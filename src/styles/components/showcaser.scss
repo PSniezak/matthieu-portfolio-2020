@@ -19,6 +19,10 @@
     width: 100%;
     position: relative;
 
+    @include customMinMediaQuery(1921px) {
+      max-width: 73.75vw;
+    }
+
     &__titles {
       position: absolute;
       left: 0;
@@ -98,10 +102,18 @@
       height: 100%;
       width: 100%;
       z-index: 1;
+      overflow: hidden;
 
       video, img {
-        width: 100%;
-        height: auto;
+        min-width: 100%;
+        // width: 100%;
+        min-height: 100%;
+
+        // @include customMinMediaQuery(1921px) {
+        //   height: 100%;
+        //   min-width: 100%;
+        //   width: 100%;
+        // }
       }
     }
 
@@ -138,6 +150,12 @@
             height: 324px;
             width: 701px;
             margin-left: 30px;
+
+            @include customMinMediaQuery(1921px) {
+              height: 30vh;
+              width: 36.51vw;
+              margin-left: 45px;
+            }
 
             img {
               position: absolute;

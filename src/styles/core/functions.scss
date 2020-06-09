@@ -3,6 +3,11 @@
     @content
   }
 };
+@mixin customMinMediaQuery($size) {
+  @media screen and (min-width: #{$size}) {
+    @content
+  }
+};
 @mixin customHeightMediaQuery($size) {
   @media screen and (max-height: #{$size}) {
     @content

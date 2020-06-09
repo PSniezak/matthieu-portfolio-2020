@@ -156,7 +156,7 @@ export default class Showcaser extends React.Component {
           targets: this.hold.current,
           scale: loop ? 0.9 : [1, 0.9],
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       )
@@ -166,7 +166,7 @@ export default class Showcaser extends React.Component {
           strokeDashoffset: [anime.setDashoffset, 0],
           // strokeDasharray: loop ? [anime.setDashoffset, 0] : 0,
           duration: this.timeToHold,
-          easing: "easeInOutSine"
+          easing: data.home.easing.progressCircle
         },
         0
       )
@@ -176,7 +176,7 @@ export default class Showcaser extends React.Component {
           targets: this.backgroundVideo.current,
           opacity: loop ? 0 : [1, 0],
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       )
@@ -189,7 +189,7 @@ export default class Showcaser extends React.Component {
           opacity: loop ? 1 : [0, 1],
           scale: loop ? 0.9 : [1, 0.9],
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         "+250"
       )
@@ -199,7 +199,7 @@ export default class Showcaser extends React.Component {
           targets: [document.querySelectorAll(".slick-slide.slick-current a")],
           scale: loop ? 0.9 : [1, 0.9],
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       );
@@ -217,7 +217,7 @@ export default class Showcaser extends React.Component {
           targets: this.hold.current,
           scale: 1,
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       )
@@ -227,7 +227,7 @@ export default class Showcaser extends React.Component {
           // opacity: 0,
           strokeDashoffset: anime.setDashoffset,
           duration: this.timeToHold,
-          easing: "easeInOutSine",
+          easing: data.home.easing.progressCircle,
           complete: () => {
             this.renderingDefault = false;
           }
@@ -240,7 +240,7 @@ export default class Showcaser extends React.Component {
           targets: this.backgroundVideo.current,
           opacity: 1,
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       )
@@ -249,7 +249,7 @@ export default class Showcaser extends React.Component {
           targets: document.querySelectorAll(".row"),
           opacity: 0,
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       )
@@ -262,7 +262,7 @@ export default class Showcaser extends React.Component {
           opacity: 0,
           scale: 1,
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       )
@@ -272,7 +272,7 @@ export default class Showcaser extends React.Component {
           targets: [document.querySelectorAll(".slick-slide.slick-current a")],
           scale: [0.9, 1],
           duration: this.timeToHold / 3,
-          easing: "easeOutCubic"
+          easing: data.home.easing.global
         },
         0
       );
@@ -287,14 +287,14 @@ export default class Showcaser extends React.Component {
     anime({
       targets: document.querySelectorAll(`.row img[data-index='${previous}']`),
       opacity: 0,
-      easing: "easeOutCubic",
+      easing: data.home.easing.global,
       duration: this.timeToHold / 4
     });
 
     anime({
       targets: document.querySelectorAll(`.row img[data-index='${previous}']`),
       opacity: 0,
-      easing: "easeOutCubic",
+      easing: data.home.easing.global,
       duration: this.timeToHold / 4
     });
 
@@ -303,7 +303,7 @@ export default class Showcaser extends React.Component {
         `.row img[data-index='${this.state.current}']`
       ),
       opacity: 1,
-      easing: "easeOutCubic",
+      easing: data.home.easing.global,
       duration: this.timeToHold / 4
     });
   };
@@ -343,18 +343,18 @@ export default class Showcaser extends React.Component {
             opacity: {
               value: [0, 1],
               duration: this.timeToHold / 4,
-              easing: "easeInQuad"
+              easing: data.home.easing.backgroundSliderIntro
             },
             scale: {
               value: [1.06, 1],
               duration: this.timeToHold / 4,
-              easing: "easeInQuad"
+              easing: data.home.easing.backgroundSliderIntro
             },
             translateX: [
               {
                 value: ["50px", "-150px"],
                 duration: this.timeToHold / 4,
-                easing: "easeInQuad"
+                easing: data.home.easing.backgroundSliderIntro
               },
               {
                 value: ["-150px", `-731px`],
@@ -371,18 +371,18 @@ export default class Showcaser extends React.Component {
             opacity: {
               value: [0, 1],
               duration: this.timeToHold / 4,
-              easing: "easeInQuad"
+              easing: data.home.easing.backgroundSliderIntro
             },
             scale: {
               value: [1.06, 1],
               duration: this.timeToHold / 4,
-              easing: "easeInQuad"
+              easing: data.home.easing.backgroundSliderIntro
             },
             translateX: [
               {
                 value: ["-50px", "150px"],
                 duration: this.timeToHold / 4,
-                easing: "easeInQuad"
+                easing: data.home.easing.backgroundSliderIntro
               },
               {
                 value: ["150px", `731px`],
@@ -455,8 +455,8 @@ export default class Showcaser extends React.Component {
       accessibility: false,
       arrows: false,
       centerPadding: "0px",
-      easing: "cubic-bezier(.37,0,.5,1)",
-      cssEase: "cubic-bezier(.37,0,.5,1)",
+      easing: data.home.easing.titleSlider,
+      cssEase: data.home.easing.titleSlider,
       draggable: false,
       swipe: false,
       touchMove: false,

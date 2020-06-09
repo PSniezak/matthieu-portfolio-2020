@@ -15,6 +15,14 @@ export const data = {
       }
     ]
   },
+  home: {
+    easing: {
+      global: "cubicBezier(0.33, 1, 0.68, 1)",
+      titleSlider: "cubic-bezier(.37,0,.5,1)",
+      progressCircle: "cubicBezier(0.37, 0, 0.63, 1)",
+      backgroundSliderIntro: "cubicBezier(0.11, 0, 0.5, 0)"
+    }
+  },
   about: {
     title: "About",
     job: ["Motion Designer", "2D/3D based in Paris "],
