@@ -13,7 +13,10 @@ const ContentSection = ({ content, theme }) => {
       } contentSectionWrapper--${theme}`}
     >
       <div className="contentSection section wrapper wrapper--small ">
-        <p className="text text--large">{content}</p>
+        <p
+          className="text text--large"
+          dangerouslySetInnerHTML={{ __html: content }}
+        ></p>
       </div>
 
       {theme === "red" && (

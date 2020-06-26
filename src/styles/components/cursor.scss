@@ -45,4 +45,8 @@ $animation: ease;
 .with-cursor {
   position: relative;
   cursor: none;
+
+  .is-mobile & {
+    cursor: inherit;
+  }
 }
