@@ -1,12 +1,13 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { AppContext } from "../context/app-context";
 import Parallax from "./Parallax";
+import { isMobile } from "../utils/is-mobile";
 
 const ImagesParallax = ({ images, title, title2 }) => {
+  const mobile = isMobile;
   const context = useContext(AppContext);
   const [title1visible, setTitle1visible] = useState(true);
-  const [title2visible, setTitle2visible] = useState(false);
-
+  const [title2visible, setTitle2visible] = useState(mobile);
   const scrollRef = useRef();
 
   return (
@@ -24,22 +25,26 @@ const ImagesParallax = ({ images, title, title2 }) => {
           min={-90}
           max={0}
           action={percent => {
-            console.log(percent);
-            console.log(percent);
-            if (percent > 0.8) {
-              setTitle1visible(false);
-              setTimeout(() => {
-                setTitle2visible(true);
-              }, 300);
-            } else {
-              setTitle2visible(false);
-              setTimeout(() => {
-                setTitle1visible(true);
-              }, 300);
+            if (!mobile) {
+              if (percent > 0.8) {
+                setTitle1visible(false);
+                setTimeout(() => {
+                  setTitle2visible(true);
+                }, 300);
+              } else {
+                setTitle2visible(false);
+                setTimeout(() => {
+                  setTitle1visible(true);
+                }, 300);
+              }
             }
           }}
         >
-          <h2 className="imagesParallaxWrapper__title title title--medium center">
+          <h2
+            className={`imagesParallaxWrapper__title title title--medium center imagesParallaxWrapper__title--${
+              mobile ? "mobile" : "desktop"
+            }`}
+          >
             <span
               className={`textAnim ${
                 title1visible ? "text--visible" : "text--hidden"

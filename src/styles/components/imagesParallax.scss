@@ -30,6 +30,13 @@ $imageHeight: 350px;
       position: absolute;
       top: 0;
     }
+
+    &.imagesParallaxWrapper__title--mobile {
+      span:nth-child(2) {
+        position: inherit;
+        top: inherit;
+      }
+    }
   }
 }
 
@@ -127,4 +134,15 @@ $imageHeight: 350px;
 }
 
 .parallax {
+  &.parallax--mobile {
+    margin-bottom: 0px !important;
+    &.imagesParallax__image {
+      text-align: center;
+    }
+    img {
+      margin: 0 !important;
+      width: 100%;
+      height: auto;
+    }
+  }
 }

@@ -31,7 +31,14 @@ const ContentTitleSection = ({ title, content, theme }) => {
           <h3 className="title title--small">{title}</h3>
         </div>
         <div className="contentTitle__content">
-          <p className="text text--small">{contentString}</p>
+          <p
+            className="text text--small"
+            dangerouslySetInnerHTML={
+              !isArray(content) ? { __html: contentString } : undefined
+            }
+          >
+            {isArray(content) ? contentString : null}
+          </p>
         </div>
       </div>
     </div>
