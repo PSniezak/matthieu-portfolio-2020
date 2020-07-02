@@ -8,4 +8,4 @@ export function checkMobile() {
   return MOBILE_IOS || MOBILE_ANDROID || MOBILE_WINDOW;
 }
 
-export const isMobile = true || checkMobile();
+export const isMobile = checkMobile();
