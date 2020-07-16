@@ -26,12 +26,12 @@ export default class Loader extends React.Component {
 
     if (isMobile) {
       console.log("-- Generating mobile image list --");
-      data.projects.forEach(el => {
+      data.projects.forEach((el) => {
         images.push(el.mainImage);
       });
     } else {
       console.log("-- Generating desktop image list --");
-      data.projects.forEach(el => {
+      data.projects.forEach((el) => {
         images.push(el.mainImage);
 
         images = images.concat(el.slideshow);
@@ -39,7 +39,7 @@ export default class Loader extends React.Component {
 
       console.log("-- Generating desktop video list --");
 
-      data.projects.forEach(el => {
+      data.projects.forEach((el) => {
         if (el.mainVideo) {
           videos.push(el.mainVideo);
         }
@@ -48,13 +48,17 @@ export default class Loader extends React.Component {
 
     this.state = {
       images,
-      videos
+      videos,
     };
   }
 
   componentDidMount() {
     this.loadFonts();
     this.animate();
+
+    setTimeout(() => {
+      this.animateOut();
+    }, 12000);
   }
 
   animate() {
@@ -78,9 +82,9 @@ export default class Loader extends React.Component {
           loop: true,
           duration: 3000,
           easing: "linear",
-          direction: "reverse"
+          direction: "reverse",
         });
-      }
+      },
     });
 
     anime({
@@ -94,9 +98,9 @@ export default class Loader extends React.Component {
           translateX: `-${blockTotal}px`,
           loop: true,
           duration: 3000,
-          easing: "linear"
+          easing: "linear",
         });
-      }
+      },
     });
   }
 
@@ -112,14 +116,14 @@ export default class Loader extends React.Component {
       delay: 1500,
       complete: function(anim) {
         finishLoader();
-      }
+      },
     });
   }
 
   loadFonts = () => {
     WebFont.load({
       custom: {
-        families: ["Apercu:n4,n7", "Authenia:n4", "MonumentExtended:n4,n9"]
+        families: ["Apercu:n4,n7", "Authenia:n4", "MonumentExtended:n4,n9"],
       },
       loading: () => {
         console.log(`-- Loading custom webfonts`);
@@ -128,7 +132,7 @@ export default class Loader extends React.Component {
         console.log("-- Webfonts loaded --");
         this.fontsLoaded = true;
         this.finishLoading();
-      }
+      },
     });
   };
 
