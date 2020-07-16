@@ -62,7 +62,7 @@ export default class About extends React.Component {
       loop: true,
       duration: 6000,
       easing: "linear",
-      direction: "reverse"
+      direction: "reverse",
     });
 
     anime({
@@ -70,7 +70,7 @@ export default class About extends React.Component {
       translateX: `-${blockTotal}px`,
       loop: true,
       duration: 6000,
-      easing: "linear"
+      easing: "linear",
     });
   }
 
@@ -91,7 +91,7 @@ export default class About extends React.Component {
         translateZ: 0,
         easing: easing,
         duration: transitionDuration,
-        delay
+        delay,
       })
       .add(
         {
@@ -100,7 +100,7 @@ export default class About extends React.Component {
           translateY: [80, 0],
           easing: easing,
           duration: transitionDuration,
-          delay: anime.stagger(100, { start: 200 })
+          delay: anime.stagger(100, { start: 200 }),
         },
         200
       )
@@ -110,7 +110,7 @@ export default class About extends React.Component {
           opacity: [0, 1],
           easing: easing,
           duration: transitionDuration,
-          delay: 200
+          delay: 200,
         },
         100
       );
@@ -129,7 +129,7 @@ export default class About extends React.Component {
       translateY: ["-100%", "0%"],
       translateZ: 0,
       easing: "easeInOutQuart",
-      duration: duration
+      duration: duration,
     });
   }
 
@@ -168,6 +168,16 @@ export default class About extends React.Component {
                   </li>
                 ))}
               </ul>
+
+              <div className={`about__credits`}>
+                <p>
+                  Credits:{" "}
+                  <a href="http://benjaminbeguin.com/" target="_blank">
+                    Benjamin Beguin
+                  </a>{" "}
+                  & <a href="mailto:paul.sniezak@gmail.com">Paul Sniezak</a>.
+                </p>
+              </div>
             </div>
           </div>
         </ScrollWrapper>

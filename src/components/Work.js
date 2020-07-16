@@ -23,14 +23,14 @@ export default class Work extends React.Component {
     this.ref = React.createRef();
     this.content = React.createRef();
     this.title = React.createRef();
-    this.projects = data.projects.map(el => {
+    this.projects = data.projects.map((el) => {
       return React.createRef();
     });
 
     this.state = {
       cursorVisible: false,
       cursorContent: "",
-      cursorColor: "red"
+      cursorColor: "red",
     };
   }
 
@@ -77,7 +77,7 @@ export default class Work extends React.Component {
             opacity: [0, 1],
             translateY: [80, 0],
             easing: "easeOutQuart",
-            duration: 2000
+            duration: 2000,
           });
         }
       }
@@ -96,7 +96,7 @@ export default class Work extends React.Component {
       translateZ: 0,
       easing: "easeOutQuart",
       duration: 1000,
-      delay
+      delay,
     });
   }
 
@@ -112,7 +112,7 @@ export default class Work extends React.Component {
       targets: this.ref.current.children,
       opacity: [1, 0],
       easing: "easeInOutQuart",
-      duration: duration
+      duration: duration,
     });
   }
 
@@ -120,7 +120,7 @@ export default class Work extends React.Component {
     this.setState({
       cursorVisible: visible,
       cursorContent: text,
-      cursorColor: color
+      cursorColor: color,
     });
   };
 
@@ -137,17 +137,17 @@ export default class Work extends React.Component {
         onMouseEnter={() => this.setCursor(true, "See project")}
         onMouseLeave={() => this.setCursor(false, "")}
       >
-        <img src={project.mainImage} alt="" />
         <div>
           <span>{`0${i + 1}`}</span>
           <h3>{project.name}/</h3>
         </div>
+        <img src={project.mainImage} alt="" />
       </Link>
     ));
 
     return (
       <ReactCursorPosition
-        onPositionChanged={props => {
+        onPositionChanged={(props) => {
           let newProps = props;
           let offset = !this.context.scrollY ? 0 : this.context.scrollY;
           newProps.position.y = newProps.position.y - offset;

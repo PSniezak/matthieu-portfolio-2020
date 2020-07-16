@@ -1,4 +1,9 @@
 .imageSection {
+  position: relative;
+  max-width: calc(100vw - #{$minWrapperPadding * 2});
+  margin: 0 auto;
+  background: $c-black;
+
   img {
     width: 100%;
   }

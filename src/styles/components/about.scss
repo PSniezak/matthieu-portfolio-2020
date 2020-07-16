@@ -3,7 +3,10 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0; right: 0; left: 0; bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 
   // @include only-phone {
   //   height: 100vh;
@@ -13,9 +16,11 @@
     position: relative;
   }
 
-
   &__bg {
-    top: 0; right: 0; left: 0; bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -28,10 +33,13 @@
     .is-mobile & {
       transform: translate3d(0, 0, 0);
     }
-  } 
+  }
 
   &__overlay {
-    top: 0; right: 0; left: 0; bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -47,7 +55,7 @@
     margin: 0 auto;
     max-width: $maxMainWidth;
     padding-bottom: 60px;
-    
+
     h2 {
       padding-top: calc((80vh / 2) - 74px);
       padding-bottom: 180px;
@@ -62,7 +70,10 @@
         padding-bottom: 64px;
       }
     }
+  }
 
+  &__credits {
+    margin-top: 60px;
   }
 
   &__infos {
@@ -140,7 +151,7 @@
       display: flex;
       list-style-type: none;
       margin-left: -350px;
-      
+
       &:first-of-type {
         margin-bottom: 30px;
 
