@@ -25,7 +25,7 @@ export const data = {
   },
   about: {
     title: "About",
-    job: ["Motion Designer", "2D/3D based in Paris "],
+    job: ["Designer/Concept Artist", "based in Paris"],
     content: [
       "<p>Matthieu Tourdes is a freelance Designer and Concept Artist. His work spans multiple disciplines, from motion graphics, live visuals, and broadcast, to film and gaming. </p><br><br><p>Matthieu is available by contract in Paris and remotely, contact <a href='mailto:matthieu.tourdes@gmail.com' >matthieu.tourdes@gmail.com</a>.</p>",
     ],
@@ -86,8 +86,8 @@ export const data = {
 
         {
           type: "paralax",
-          title: "A VOYAGE TO A DARK REALITY.",
-          title2: " WHERE HUMANS NEED TO RECOVER",
+          title: "A VOYAGE TO A DARK REALITY",
+          title2: "WHERE HUMANS NEED TO RECOVER",
           images: [
             require("images/eclipse/parallax/eclipse_parallax05.png"),
             require("images/eclipse/parallax/eclipse_parallax06.png"),
@@ -181,7 +181,7 @@ export const data = {
       tags: ["ident", "design", "art direction"],
       mainVideo: require("video/syfy_home.mp4"),
       description:
-        "In 2018, 17MARS agency gave me the opportunity to design a jingle pub for the famous television channel SYFY. The theme was about magic and fantasy with a relation to differents SYFY series universe. Vimeo mdp: syfy",
+        "In 2018, 17MARS agency gave me the opportunity to design a jingle pub for the famous television channel SYFY. The theme was about magic and fantasy with a relation to differents SYFY series universe.",
       mainImage: require("images/syfy/final_frames/syfy_mainimage.png"),
       slideshow: [
         require("images/syfy/final_frames/syfy_mainimage.png"),
@@ -200,12 +200,6 @@ export const data = {
         },
 
         {
-          type: "slider",
-          isFullPage: true,
-          images: [require("images/syfy/final_frames/syfy_mainimage.png")],
-        },
-
-        {
           type: "video",
           image: require("images/syfy/final_frames/syfy_mainimage.png"),
           video: "422799831",
@@ -215,7 +209,7 @@ export const data = {
           type: "content-title",
           title: "EARLY PRODUCTION",
           content:
-            "The first production phase of the jingle was about making 3 concepts with a quick block out in 3D and a compositing in photoshop. For each jingle, the narration had to follow a pattern with two close up slowly revealing the mood and an ending with a wideshot of the environment. The logo was added on top as if we had only a glimpse into the syfy universe.",
+            "I first made 3 concepts with a quick block out in 3D and a compositing in photoshop. For each jingle, the narration had to follow a pattern with two close up slowly revealing the mood and an ending with a wideshot of the environment. The logo was added on top as if we had only a glimpse into the syfy universe.",
         },
 
         {
@@ -229,7 +223,8 @@ export const data = {
         },
         {
           type: "paralax",
-          title: "A GLIMPSE INTO THE SYFY UNIVERSE",
+          title: "A GLIMPSE INTO",
+          title2: "THE SYFY UNIVERSE"
           images: [
             require("images/syfy/parallax/syfy_parallax00.png"),
             require("images/syfy/parallax/syfy_parallax01.png"),
@@ -243,7 +238,7 @@ export const data = {
           type: "content-title",
           title: "STILL FRAMES",
           content:
-            "The concepts were well received but SYFY asked to design another option for how the main magical element should be portrayed in the jingle. They wanted something more magical than fantasy. I created something we could see as a spell floating and flickering in the air but it has not made it to the final jingle.",
+            "SYFY asked to design another option for how the main magical element should be portrayed in the jingle. They wanted something more magical than fantasy. I created something we could see as a spell floating and flickering in the air but it has not made it to the final jingle.",
         },
         {
           type: "slider",
@@ -276,7 +271,7 @@ export const data = {
       slug: "dune",
       tags: ["concept art", "design", "art direction"],
       description:
-        "Moving on in my journey towards concept art, I've been trying out digital painting techniques lately and I love it. I recently watched a documentary about Jodorowsky's Dune and read the original book by Frank Herbert that inspired me this project.",
+        "Moving on in my journey towards concept art, I've been trying out digital painting techniques lately and I love it. I recently watched a documentary about Jodorowsky's Dune and read the original book by Frank Herbert that inspired me this project. The first image is about a sunset on the peculiar city of Arrakeen. Hope you like it.",
       mainVideo: false,
       mainImage: require("images/dune/final_frames/dune_arrakeen.png"),
       slideshow: [
@@ -292,7 +287,7 @@ export const data = {
           type: "content",
           theme: "red",
           content:
-            "Moving on in my journey towards concept art, I've been trying out digital painting techniques lately and I love it. I recently watched a documentary about Jodorowsky's Dune and read the original book by Frank Herbert that inspired me this project.",
+            "Moving on in my journey towards concept art, I recently watched a documentary about Jodorowsky's Dune and read the original book by Frank Herbert that inspired me this project.",
         },
 
         {
@@ -305,7 +300,7 @@ export const data = {
           type: "content",
           theme: "black",
           content:
-            "For this project, I wanted to do a painting with characters. I had in mind a very dusty atmosphere where breathing seems difficult if not impossible without a mask filtering the hot air. The idea of the street with archs came messing around with the amazing kitbash3d kit Ancient Temples. The focus was on simplify/exagerate while keeping the focus and values fine.",
+            "For the next image, I wanted to do a painting with characters. I had in mind a very dusty atmosphere where breathing seems difficult if not impossible without a mask filtering the hot air. The idea of the street with archs came messing around with the amazing kitbash3d kit Ancient Temples.",
           image: "",
         },
 
