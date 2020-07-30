@@ -77,8 +77,8 @@
   }
 
   &__infos {
-    margin-left: calc(100% / 2);
-    max-width: calc(#{$mainWidth} / 2);
+    margin-left: calc(100% / 2 - 32px);
+    max-width: calc(#{$mainWidth} / 2 + 32px);
 
     @include customMediaQuery($mainWidth) {
       max-width: calc(85% / 2);
