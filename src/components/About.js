@@ -147,7 +147,7 @@ export default class About extends React.Component {
 
             <div className={`about__infos`}>
               <h3>
-                 {{data.about.job[0]}}<br /> {{data.about.job[1]}}{" "}
+                 {data.about.job[0]}<br /> {data.about.job[1]}{" "}
               </h3>
 
               <div dangerouslySetInnerHTML={{ __html: data.about.content }} />
