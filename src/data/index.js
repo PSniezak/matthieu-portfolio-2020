@@ -224,7 +224,7 @@ export const data = {
         {
           type: "paralax",
           title: "A GLIMPSE INTO",
-          title2: "THE SYFY UNIVERSE"
+          title2: "THE SYFY UNIVERSE",
           images: [
             require("images/syfy/parallax/syfy_parallax00.png"),
             require("images/syfy/parallax/syfy_parallax01.png"),
